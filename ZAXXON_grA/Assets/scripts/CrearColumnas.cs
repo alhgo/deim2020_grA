@@ -31,7 +31,7 @@ public class CrearColumnas : MonoBehaviour
     {
         //Creo un nuevo vector3
         float posRandom = Random.Range(0f, 30f);
-        Vector3 DestPos = new Vector3(0, 0, posRandom);
+        Vector3 DestPos = new Vector3(posRandom, 0, 0);
         Vector3 NewPos = RefPos.position + DestPos;
         //Instancio el prefab en la posición del objeto de referencia
         //Como tenemos su componente Transform, le indicamos que lo que quiero es su posición
