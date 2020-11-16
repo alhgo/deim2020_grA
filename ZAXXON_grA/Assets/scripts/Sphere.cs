@@ -27,7 +27,7 @@ public class Sphere : MonoBehaviour
         float desplY = Input.GetAxis("Vertical");
         transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
         float desplX = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+        transform.Translate(Vector3.left * Time.deltaTime * speed * desplX);
 
 
     }
