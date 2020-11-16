@@ -31,13 +31,13 @@ public class Sphere : MonoBehaviour
         float desplY = Input.GetAxis("Vertical");
         float desplX = Input.GetAxis("Horizontal");
 
-        if(posX > -5 && posX < 5 || posX < -5 && desplX > 0 || posX > 5 && desplX < 0)
+        if(posX > -10 && posX < 10 || posX < -10 && desplX > 0 || posX > 10 && desplX < 0)
         {
             transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
         }
        
 
-        if (posY > 1 && posY < 6 || posY < 1 && desplY > 0 || posY > 6 && desplY < 0)
+        if (posY > 1 && posY < 10 || posY < 1 && desplY > 0 || posY > 10 && desplY < 0)
         {
             transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
         }
