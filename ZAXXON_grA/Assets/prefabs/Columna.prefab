@@ -55,7 +55,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -151,7 +150,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -203,4 +201,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Nave: {fileID: 0}
-  DestPos: {x: 1, y: 0, z: 0}
+  DestPos: {x: 0, y: 0, z: -1}
