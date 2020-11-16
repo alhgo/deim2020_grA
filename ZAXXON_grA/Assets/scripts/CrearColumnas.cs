@@ -12,6 +12,7 @@ public class CrearColumnas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Iniciamos la corrutina que creará las instancias
         StartCoroutine("ColumnCorrutine");
 
 
@@ -20,16 +21,13 @@ public class CrearColumnas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
-        {
-            CrearColumna();
-        }
+        
 
     }
 
     void CrearColumna()
     {
-        //Creo un nuevo vector3
+        //Creo un nuevo vector3 con una posición random en X
         float posRandom = Random.Range(0f, 30f);
         Vector3 DestPos = new Vector3(posRandom, 0, 0);
         Vector3 NewPos = RefPos.position + DestPos;
@@ -38,16 +36,18 @@ public class CrearColumnas : MonoBehaviour
         Instantiate(MyColumn, NewPos, Quaternion.identity);
     }
 
+    //Corrutina que se ejecuta cada cierto tiempo
+    //IMPORTANTE: el intevalo de creación ahora es fijo pero debería depender de la velocidad de la nave
     IEnumerator ColumnCorrutine()
     {
 
         for (int n=0; ; n++ )
         {
-            print(n);
-            //Intancio el prefab en coordenadas 0,0,0
-            //Instantiate(MyColumn);
+            
+            //Llamo al método que crea las columnas de forma aleatoria
             CrearColumna();
-            yield return new WaitForSeconds(1);
+            //Indico a la corrutina que se repita cada segundo
+            yield return new WaitForSeconds(1f);
         }
     }
 }

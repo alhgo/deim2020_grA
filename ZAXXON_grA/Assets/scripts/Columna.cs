@@ -20,7 +20,7 @@ public class Columna : MonoBehaviour
     {
         //sphere = GetComponent<Sphere>();
         //mySpeed = sphere.speed;
-        mySpeed = 2f;
+        mySpeed = 10f;
         //print(mySpeed);
     }
 

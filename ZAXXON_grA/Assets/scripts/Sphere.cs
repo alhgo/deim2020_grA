@@ -16,18 +16,47 @@ public class Sphere : MonoBehaviour
     void Update()
     {
 
-        //Método para mover la nave con el joystick
         MoverNave();
 
     }
 
     void MoverNave()
     {
+        float PosX = transform.position.x;
+        float PosY = transform.position.y;
         print(transform.position.x);
         float desplY = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+        
         float desplX = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+
+        //Restringir movimiento horizontal
+        if (PosX > 0 && PosX < 30)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+        }
+        else if(PosX < 0 && desplX > 0)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+        }
+        else if (PosX > 30 && desplX < 0)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+        }
+
+        //Restringir movimiento vertical
+        if (PosY > 0 && PosY < 9)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+        }
+        else if (PosY < 0 && desplY > 0)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+        }
+        else if (PosY > 9 && desplY < 0)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+        }
+
 
 
     }
