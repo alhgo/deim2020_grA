@@ -5,34 +5,35 @@ using UnityEngine;
 
 public class Columna : MonoBehaviour
 {
-    public GameObject Nave;
-    private Sphere sphere;
+    //public GameObject Nave;
+    //public Sphere sphere;
 
     private Vector3 MyPos;
-    [SerializeField] Vector3 DestPos;
-    private Vector3 FinalPos;
+    //[SerializeField] Vector3 DestPos;
+    //private Vector3 FinalPos;
+    [SerializeField] float mySpeed;
+    
 
-    
-    float mySpeed;
-    
     // Start is called before the first frame update
     void Start()
     {
         //sphere = GetComponent<Sphere>();
         //mySpeed = sphere.speed;
-        mySpeed = 5f;
-        print(mySpeed);
+        mySpeed = 2f;
+        //print(mySpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        MyPos = transform.position;
-        FinalPos = MyPos + DestPos * Time.deltaTime * mySpeed;
-        transform.position = FinalPos;
+        //MyPos = transform.position;
+        //FinalPos = MyPos + DestPos * Time.deltaTime * mySpeed;
+        //transform.position = FinalPos;
         //print(MyPos);
 
-        if(transform.position.x > 25)
+        transform.Translate(Vector3.back * Time.deltaTime * mySpeed);
+
+        if(transform.position.x <-10 )
         {
             Destroy(gameObject);
         }
