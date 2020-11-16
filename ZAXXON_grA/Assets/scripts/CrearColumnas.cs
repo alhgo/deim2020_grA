@@ -24,7 +24,7 @@ public class CrearColumnas : MonoBehaviour
     void CrearColumna()
     {
         //Creo un nuevo vector3
-        float posRandom = Random.Range(-10f, 10f);
+        float posRandom = Random.Range(-9.5f, 9.5f);
         Vector3 DestPos = new Vector3(posRandom, 0, 0);
         Vector3 NewPos = RefPos.position + DestPos;
         //Instancio el prefab en la posición del objeto de referencia

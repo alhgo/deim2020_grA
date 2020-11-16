@@ -23,14 +23,49 @@ public class Sphere : MonoBehaviour
 
     void MoverNave()
     {
-        /*if (transform.position.x > -15; < 15)*/
-            
-            
-            print(transform.position.x);
-            float desplY = Input.GetAxis("Vertical");
-            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
-            float desplX = Input.GetAxis("Horizontal");
+        print(transform.position.x);
+
+        float desplY = Input.GetAxis("Vertical");
+       
+        float desplX = Input.GetAxis("Horizontal");
+
+        float PosX = transform.position.x;
+        float PosY = transform.position.y;
+
+        //Eje X
+
+        if (PosX > -9.5 && PosX < 9.5)
+        {       
             transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
-       // }
+        }
+
+        //Método de permitir movimiento contrario para corregir error en eje X
+
+        else if (PosX < -9.5 && desplX > 0)
+        {
+            transform.Translate(Vector3.right*Time.deltaTime*speed*desplX);
+        }
+        else if (PosX > 9.5 && desplX < 0)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+        }
+
+        //Eje Y
+
+        if (PosY > 1.5 && PosY < 6.5)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+        }
+
+        //Método de permitir movimiento contrario para corregir error en eje Y
+
+        else if (PosY < 1.5 && desplY > 0)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+        }
+        else if (PosY > 3.5 && desplY < 0)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+        }
     }
 }
