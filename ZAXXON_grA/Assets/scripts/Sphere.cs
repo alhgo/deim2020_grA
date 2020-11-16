@@ -23,12 +23,14 @@ public class Sphere : MonoBehaviour
 
     void MoverNave()
     {
-        print(transform.position.x);
-        float desplY = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
-        float desplX = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
-
-
+        /*if (transform.position.x > -15; < 15)*/
+            
+            
+            print(transform.position.x);
+            float desplY = Input.GetAxis("Vertical");
+            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+            float desplX = Input.GetAxis("Horizontal");
+            transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+       // }
     }
 }
