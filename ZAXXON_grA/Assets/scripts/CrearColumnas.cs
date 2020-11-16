@@ -43,7 +43,7 @@ public class CrearColumnas : MonoBehaviour
 
         for (int n=0; ; n++ )
         {
-            print(n);
+            //print(n);
             //Intancio el prefab en coordenadas 0,0,0
             //Instantiate(MyColumn);
             CrearColumna();
