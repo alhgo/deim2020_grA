@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sphere : MonoBehaviour
 {
     public float speed = 2.5f;
-    
+    [SerializeField] Text Aa;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,7 @@ public class Sphere : MonoBehaviour
         MoverNave();
 
     }
-
+    
     void MoverNave()
     {
         print(transform.position.x);
