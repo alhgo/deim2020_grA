@@ -8,10 +8,18 @@ public class CrearColumnas : MonoBehaviour
     [SerializeField] GameObject MyColumn;
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
+
+    //Distancia entre columnas
+    [SerializeField] float distObstacle;
+    //Vector que usaremos para posicionar las columnas de inicio
+    Vector3 newPos;
         
     // Start is called before the first frame update
     void Start()
     {
+        //Creo un método que generará las columnas iniciales
+        CrearColumnasIniciales();
+
         //Iniciamos la corrutina que creará las instancias
         StartCoroutine("ColumnCorrutine");
 
@@ -23,6 +31,21 @@ public class CrearColumnas : MonoBehaviour
     {
         
 
+    }
+
+    //Método que crea las columnas de inicio
+    void CrearColumnasIniciales()
+    {
+        //Bucle que genera 17 columnas iniciales
+        for (int n = 1; n <= 17; n++)
+        {
+            //Calculo un vector para desplazar en Z la distancia y en X un nº random
+            float randomX = Random.Range(0f, -30f);
+            newPos = new Vector3(randomX, 0, n * distObstacle);
+            Vector3 finalPos = RefPos.position - newPos;
+            //Instancio la columna
+            Instantiate(MyColumn, finalPos, Quaternion.identity);
+        }
     }
 
     void CrearColumna()
