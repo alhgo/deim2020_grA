@@ -9,10 +9,8 @@ public class CrearColumnas : MonoBehaviour
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
 
-    private Vector3 initPos;
-    private Vector3 savedPos;
+    private Vector3 initPos, savedPos;
     private Vector3 nPos = new Vector3(0f, 0f, -10f);
-
 
 
     // Start is called before the first frame update
@@ -20,18 +18,18 @@ public class CrearColumnas : MonoBehaviour
     {
         float n;
         initPos = transform.position;
-        savedPos = initPos;
-
-        StartCoroutine("ColumnCorrutine");
-
+        savedPos = transform.position;
+              
         for(n= 0; n<10; n++)
         {
-            initPos = initPos + nPos;
+            initPos += nPos;
             transform.position = initPos;
             CrearColumna();
         }
 
         transform.position = savedPos;
+
+        StartCoroutine("ColumnCorrutine");
     }
 
     // Update is called once per frame
@@ -57,8 +55,8 @@ public class CrearColumnas : MonoBehaviour
 
     IEnumerator ColumnCorrutine()
     {
-
-        for (int n=0; ; n++ )
+        int n;
+        for (n=0; ; n++ )
         {
             //print(n);
             //Intancio el prefab en coordenadas 0,0,0

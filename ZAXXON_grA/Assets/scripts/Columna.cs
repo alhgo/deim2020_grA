@@ -34,7 +34,7 @@ public class Columna : MonoBehaviour
 
         transform.Translate(Vector3.back * Time.deltaTime * mySpeed);
 
-        if(transform.position.z < -55)
+        if(transform.position.z < -60)
         {
             Destroy(gameObject);
         }
