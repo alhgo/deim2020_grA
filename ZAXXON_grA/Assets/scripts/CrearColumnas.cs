@@ -8,13 +8,30 @@ public class CrearColumnas : MonoBehaviour
     [SerializeField] GameObject MyColumn;
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
-        
+
+    private Vector3 initPos;
+    private Vector3 savedPos;
+    private Vector3 nPos = new Vector3(0f, 0f, -10f);
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        float n;
+        initPos = transform.position;
+        savedPos = initPos;
+
         StartCoroutine("ColumnCorrutine");
 
+        for(n= 0; n<10; n++)
+        {
+            initPos = initPos + nPos;
+            transform.position = initPos;
+            CrearColumna();
+        }
 
+        transform.position = savedPos;
     }
 
     // Update is called once per frame
