@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Columna : MonoBehaviour
 {
+    
     public GameObject Nave;
     private Sphere sphere;
 
@@ -15,12 +16,15 @@ public class Columna : MonoBehaviour
     //Variable velocidad
     [SerializeField] float mySpeed;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        //sphere = GetComponent<Sphere>();
-        //mySpeed = sphere.speed;
-        mySpeed = 10f;
+
+        Nave = GameObject.Find("Spaceship");
+        sphere = Nave.GetComponent<Sphere>();
+        mySpeed = sphere.speed;
+        //mySpeed = 10f;
         //print(mySpeed);
     }
 

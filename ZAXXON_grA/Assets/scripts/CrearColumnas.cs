@@ -9,6 +9,7 @@ public class CrearColumnas : MonoBehaviour
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
 
+
     //Distancia entre columnas
     [SerializeField] float distObstacle;
     //Vector que usaremos para posicionar las columnas de inicio
@@ -17,7 +18,10 @@ public class CrearColumnas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         //Creo un método que generará las columnas iniciales
+        distObstacle = 8f;
         CrearColumnasIniciales();
 
         //Iniciamos la corrutina que creará las instancias
