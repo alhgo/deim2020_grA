@@ -9,30 +9,24 @@ public class Columna : MonoBehaviour
     private Sphere sphere;
 
     private Vector3 MyPos;
-    //[SerializeField] Vector3 DestPos;
-    //private Vector3 FinalPos;
+
 
     //Variable velocidad
-    [SerializeField] float mySpeed;
+    public float mySpeed;
 
     // Start is called before the first frame update
     void Start()
     {
-        //sphere = GetComponent<Sphere>();
-        //mySpeed = sphere.speed;
-        mySpeed = 2f;
-        //print(mySpeed);
+      
+        mySpeed = 10f;
+        
     }
 
     // Update is called once per frame
     void Update()
-    {
-        //MyPos = transform.position;
-        //FinalPos = MyPos + DestPos * Time.deltaTime * mySpeed;
-        //transform.position = FinalPos;
-        //print(MyPos);
+    { 
 
-        transform.Translate(Vector3.back * Time.deltaTime * mySpeed);
+      transform.Translate(Vector3.back * Time.deltaTime * mySpeed);
 
         if(transform.position.z < -10)
         {

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Sphere : MonoBehaviour
 {
-    public float speed = 2.5f;
+    public float speed = 10f;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.position = new Vector3(0, 2, 0);
     }
 
     // Update is called once per frame
@@ -18,17 +18,37 @@ public class Sphere : MonoBehaviour
 
         //Método para mover la nave con el joystick
         MoverNave();
-
+        /*RotacionNave();*/
     }
+
+    /*void RotacionNave()
+    {
+        float rotacionNave = Input.GetAxis("HorizontalTurn");
+        print(rotacionNave);
+   
+    }*/
 
     void MoverNave()
     {
-        print(transform.position.x);
+       
+        float posX = transform.position.x;
+        float posY = transform.position.y;
         float desplY = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
         float desplX = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
 
+        //restringir movimiento en el eje X
+        if (posX < 14 && posX > -14 || posX < -14 && desplX > 0 || posX > 14 && desplX < 0)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+        }
 
+        //restringir movimiento en el eje Y
+        if (posY < 10 && posY > 1 || posY < 1 && desplY > 0 || posY > 10 && desplY < 0)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+        }
     }
+
+
 }
+

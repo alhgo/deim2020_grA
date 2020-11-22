@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,25 +13,35 @@ public class CrearColumnas : MonoBehaviour
     void Start()
     {
         StartCoroutine("ColumnCorrutine");
-
+        CrearColumnaInicio();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
-        {
-            CrearColumna();
-        }
-
+       
     }
-
+    void CrearColumnaInicio()
+    {
+      
+        
+        for (int n = 0; n <= 30; n++ )
+        {
+            float posRandom = Random.Range(-15, 15);
+            float posRandomLejania = Random.Range(-147, 0);
+            float posRandomAltura = Random.Range(3, 14);
+            Vector3 DestPos = new Vector3(posRandom, posRandomAltura, posRandomLejania);
+            Vector3 NewPos = RefPos.position + DestPos;
+            Instantiate(MyColumn, NewPos, Quaternion.identity);
+        }
+    }
     void CrearColumna()
     {
         //Creo un nuevo vector3
-        float posRandom = Random.Range(0f, 30f);
-        Vector3 DestPos = new Vector3(posRandom, 0, 0);
+        float posRandomAltura = Random.Range(3, 14);
+        float posRandom = Random.Range(-15, 15);
+        Vector3 DestPos = new Vector3(posRandom, posRandomAltura, 0);
         Vector3 NewPos = RefPos.position + DestPos;
         //Instancio el prefab en la posición del objeto de referencia
         //Como tenemos su componente Transform, le indicamos que lo que quiero es su posición
@@ -47,7 +57,8 @@ public class CrearColumnas : MonoBehaviour
             //Intancio el prefab en coordenadas 0,0,0
             //Instantiate(MyColumn);
             CrearColumna();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.09f);
+           
         }
     }
 }
