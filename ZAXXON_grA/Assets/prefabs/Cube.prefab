@@ -106,4 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Nave: {fileID: 0}
-  mySpeed: 0
+  ui: {fileID: 0}
+  mySpeed: 10
+  myNewSpeed: 10

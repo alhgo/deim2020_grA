@@ -26,10 +26,10 @@ public class CrearColumnas : MonoBehaviour
     {
       
         
-        for (int n = 0; n <= 30; n++ )
+        for (int n = 0; n <= 70; n++ )
         {
             float posRandom = Random.Range(-15, 15);
-            float posRandomLejania = Random.Range(-147, 0);
+            float posRandomLejania = Random.Range(-147, -10);
             float posRandomAltura = Random.Range(3, 14);
             Vector3 DestPos = new Vector3(posRandom, posRandomAltura, posRandomLejania);
             Vector3 NewPos = RefPos.position + DestPos;
@@ -53,7 +53,7 @@ public class CrearColumnas : MonoBehaviour
 
         for (int n=0; ; n++ )
         {
-            print(n);
+            
             //Intancio el prefab en coordenadas 0,0,0
             //Instantiate(MyColumn);
             CrearColumna();
