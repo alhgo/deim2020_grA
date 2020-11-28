@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Columna : MonoBehaviour
 {
-    //public GameObject Nave;
-    //public Sphere sphere;
+    public GameObject Nave;
+    public Sphere sphere;
 
     private Vector3 MyPos;
     //[SerializeField] Vector3 DestPos;
@@ -17,25 +17,31 @@ public class Columna : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //sphere = GetComponent<Sphere>();
-        //mySpeed = sphere.speed;
-        mySpeed = 2f;
+        Nave = GameObject.Find("Sphere");
+
+        
+        sphere = Nave.GetComponent<Sphere>();
+        mySpeed = sphere.speed*2.5f;
+        //mySpeed = 10f;
         //print(mySpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //MyPos = transform.position;
-        //FinalPos = MyPos + DestPos * Time.deltaTime * mySpeed;
-        //transform.position = FinalPos;
-        //print(MyPos);
-
-        transform.Translate(Vector3.back * Time.deltaTime * mySpeed);
-
-        if(transform.position.x <-10 )
+       if(sphere.speed != 0f)
         {
-            Destroy(gameObject);
+            //MyPos = transform.position;
+            //FinalPos = MyPos + DestPos * Time.deltaTime * mySpeed;
+            //transform.position = FinalPos;
+            //print(MyPos);
+
+            transform.Translate(Vector3.back * Time.deltaTime * mySpeed);
+
+            if (transform.position.z < -10)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

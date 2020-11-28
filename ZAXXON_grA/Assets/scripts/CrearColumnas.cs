@@ -8,10 +8,22 @@ public class CrearColumnas : MonoBehaviour
     [SerializeField] GameObject MyColumn;
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
-        
+    //Distancia entre columnas
+   [SerializeField] float distObstacle;
+    Vector3 newPos;
+    private float speed;
+    private float temporizador;
+    //Variables para asociarse con un gameObject y un Script de ese gameObject
+    public GameObject Nave;
+    private Sphere sphereMove;
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        CrearColumnasIniciales();
+        
+        sphereMove = Nave.GetComponent<Sphere>();
         StartCoroutine("ColumnCorrutine");
 
 
@@ -23,10 +35,29 @@ public class CrearColumnas : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             CrearColumna();
+
+        }
+        if (sphereMove.speed != 0f) 
+        {
+            speed = sphereMove.speed;
+        }
+        else
+        {
+            StopCoroutine("ColumnCorrutine");
         }
 
     }
-
+    void CrearColumnasIniciales()
+    {
+        distObstacle = 10f;
+        for (int n = 1; n <= 17; n++)
+        {
+            float randomZ = Random.Range(0f, 30f);
+            newPos = new Vector3(-randomZ, 0, n * distObstacle);
+            Vector3 finalPos = RefPos.position - newPos;
+            Instantiate(MyColumn, finalPos, Quaternion.identity);
+        }
+    }
     void CrearColumna()
     {
         //Creo un nuevo vector3
@@ -47,7 +78,10 @@ public class CrearColumnas : MonoBehaviour
             //Intancio el prefab en coordenadas 0,0,0
             //Instantiate(MyColumn);
             CrearColumna();
-            yield return new WaitForSeconds(1);
+            //Relación entre la velocidad de la nave y el tiempo para instanciar columnas
+            temporizador = 1f - (speed * 0.04f);
+            yield return new WaitForSeconds(temporizador);
         }
     }
+   
 }
