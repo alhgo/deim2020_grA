@@ -53,9 +53,6 @@ public class CrearColumnas : MonoBehaviour
 
         for (int n=0; ; n++ )
         {
-            
-            //Intancio el prefab en coordenadas 0,0,0
-            //Instantiate(MyColumn);
             CrearColumna();
             yield return new WaitForSeconds(0.09f);
            

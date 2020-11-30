@@ -466,8 +466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdf4db376fe3c4459f50fbe9205eb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columna: {fileID: -3092786581230101122, guid: 4a8983b620ba5b14a80806356af3224a,
+  otroObjeto: {fileID: 7821103020533807619, guid: 4a8983b620ba5b14a80806356af3224a,
     type: 3}
+  playedTime: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
