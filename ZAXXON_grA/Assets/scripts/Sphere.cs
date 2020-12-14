@@ -28,7 +28,7 @@ public class Sphere : MonoBehaviour
         {
             transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
         }
-        if (PosY >= 0 && PosY < 10 || PosY <= 0 && desplY > 0 || PosY > 10 && desplY < 0)
+        if (PosY > -13 && PosY < 13 || PosY < -13 && desplY > 0 || PosY > 13 && desplY < 0)
         {
             transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
         }

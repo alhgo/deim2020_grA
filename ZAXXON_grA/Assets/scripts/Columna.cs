@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class Columna : MonoBehaviour
 {
-    public GameObject columna;
     private Sphere sphere;
     private Vector3 MyPos;
 
 
-    [SerializeField] float mySpeed = 5;
+    [SerializeField] float mySpeed = 10;
     
     // Start is called before the first frame update
     void Start()
@@ -28,7 +27,7 @@ public class Columna : MonoBehaviour
 
         if (transform.position.z < -25)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }
