@@ -6,14 +6,26 @@ public class InitGame : MonoBehaviour
 {
     [SerializeField] GameObject[] whites;
     [SerializeField] GameObject[] blacks;
+    [SerializeField] GameObject wpeon;
+    [SerializeField] GameObject bpeon;
 
     Vector3 initPosW = new Vector3(-21, 0, 21);
     Vector3 initPosB = new Vector3(-21, 0, -21);
 
-    Vector3 sumPos = new Vector3(6, 0, 0);
+    Vector3 initPosWpeon = new Vector3(-21, 1, 15);
+    Vector3 initPosBpeon = new Vector3(-21, 1, -15);
+
+
+    Vector3 sumPos = new Vector3(6, 0, 0); 
+
 
     // Start is called before the first frame update
     void Start()
+    {
+        InitGamePieces();
+    }
+       
+    void InitGamePieces()
     {
         int i;
 
@@ -21,14 +33,18 @@ public class InitGame : MonoBehaviour
         {
             //int r = Random.Range(0, objetos.Length);
             Instantiate(whites[i], initPosW, Quaternion.Euler(-90, 90, 0));
-            initPosW = initPosW + sumPos;
+            initPosW += sumPos;
+
+            Instantiate(wpeon, initPosWpeon, Quaternion.Euler(-90, 90, 0));
+            initPosWpeon += sumPos;
 
             Instantiate(blacks[i], initPosB, Quaternion.Euler(-90, -90, 0));
             initPosB = initPosB + sumPos;
 
+            Instantiate(bpeon, initPosBpeon, Quaternion.Euler(-90, -90, 0));
+            initPosBpeon += sumPos;
+
         }
-
     }
-
 
 }
