@@ -26,6 +26,11 @@ public class Sphere : MonoBehaviour
         SpeedText.text = "Velocidad: " + speed + "km/h";
     }
 
+    void SendtoConsole()
+    {
+        print("Estás accediendo a un método de la esfera");
+    }
+
     void MoverNave()
     {
         float posX = transform.position.x;
