@@ -3,7 +3,12 @@ guid: f7f5fd0cb8d21d247bcd57276f69984c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Speed: {instanceID: 0}
+  - TimePlayed: {instanceID: 0}
+  - Distance: {instanceID: 0}
+  - columna: {fileID: 2388127070130277672, guid: c78899a646417e84099aebc205842f83,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

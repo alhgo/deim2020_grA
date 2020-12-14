@@ -5,36 +5,36 @@ using UnityEngine;
 
 public class Columna : MonoBehaviour
 {
-    public GameObject Nave;
-    private Sphere sphere;
+    //public GameObject Nave;
+    //public Sphere sphere;
 
     private Vector3 MyPos;
     [SerializeField] Vector3 DestPos;
     private Vector3 FinalPos;
 
-    
-    float mySpeed;
+    public float mySpeed;
     
     // Start is called before the first frame update
     void Start()
     {
-        //sphere = GetComponent<Sphere>();
-        //mySpeed = sphere.speed;
-        mySpeed = 5f;
-        print(mySpeed);
+        //Le asigno una velocidad inicial a la velocidad de las columnas
+        mySpeed = 35f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        MyPos = transform.position;
-        FinalPos = MyPos + DestPos * Time.deltaTime * mySpeed;
-        transform.position = FinalPos;
-        //print(MyPos);
+        MovimientoColumna();        
+    }
 
-        if(transform.position.x > 25)
+    void MovimientoColumna(){
+        transform.Translate(Vector3.back * Time.deltaTime * mySpeed);
+
+        //Destruye las columnas por detrás del campo de visión
+        if(transform.position.z < -10)
         {
             Destroy(gameObject);
         }
     }
+
 }
