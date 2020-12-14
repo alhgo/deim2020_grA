@@ -124,10 +124,6 @@ public class Sphere : MonoBehaviour
         DistanciaText.text = "";
         record.text = "Récord:" + distancia;
 
-
-
-
-
         panelRestart.SetActive(true);
     }
 }
