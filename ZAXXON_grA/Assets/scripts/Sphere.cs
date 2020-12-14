@@ -1,34 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Sphere : MonoBehaviour
 {
     public float speed = 2.5f;
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        //Método para mover la nave con el joystick
         MoverNave();
-
     }
 
     void MoverNave()
     {
-        print(transform.position.x);
-        float desplY = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+        float PosX = transform.position.x;
+        float PosY = transform.position.y;
         float desplX = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+        float desplY = Input.GetAxis("Vertical");
+        if (PosX > -13 && PosX < 13 || PosX < -13 && desplX > 0 || PosX > 13 && desplX < 0)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+        }
+        if (PosY >= 0 && PosY < 10 || PosY <= 0 && desplY > 0 || PosY > 10 && desplY < 0)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+        }
+      }
 
-
-    }
 }
