@@ -10,4 +10,8 @@ public class Restart : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
 
     }
+   public void SalirScene()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
