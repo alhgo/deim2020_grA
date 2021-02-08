@@ -41,7 +41,7 @@ public class Sphere : MonoBehaviour
     {
         float PosX = transform.position.x;
         float PosY = transform.position.y;
-        print(transform.position.x);
+        //print(transform.position.x);
         float desplY = Input.GetAxis("Vertical");
         
         float desplX = Input.GetAxis("Horizontal");
