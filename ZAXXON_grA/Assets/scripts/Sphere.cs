@@ -15,18 +15,12 @@ public class Sphere : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //Método para mover la nave con el joystick
         MoverNave();
-        /*RotacionNave();*/
+       
     }
 
-    /*void RotacionNave()
-    {
-        float rotacionNave = Input.GetAxis("HorizontalTurn");
-        print(rotacionNave);
-   
-    }*/
+    
 
     void MoverNave()
     {
@@ -36,17 +30,21 @@ public class Sphere : MonoBehaviour
         float desplY = Input.GetAxis("Vertical");
         float desplX = Input.GetAxis("Horizontal");
 
-        //restringir movimiento en el eje X
+        //restringir movimiento en el eje X y parte del codigo de Iris (SpaceWorld y rotación)
         if (posX < 14 && posX > -14 || posX < -14 && desplX > 0 || posX > 14 && desplX < 0)
         {
-            transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+             transform.Translate(Vector3.right * Time.deltaTime * speed * desplX, Space.World);
         }
 
         //restringir movimiento en el eje Y
         if (posY < 10 && posY > 1 || posY < 1 && desplY > 0 || posY > 10 && desplY < 0)
         {
-            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY, Space.World);
         }
+         
+        //rotación nave
+         transform.rotation = Quaternion.Euler(desplY * -10, 0 , desplX * -20);
+         
     }
 
 
