@@ -26,10 +26,10 @@ public class CrearColumnas : MonoBehaviour
     {
       
         
-        for (int n = 0; n <= 55; n++ )
+        for (int n = 0; n <= 100; n++ )
         {
             float posRandom = Random.Range(-15, 15);
-            float posRandomLejania = Random.Range(-165, -10);
+            float posRandomLejania = Random.Range(-270, -10);
             float posRandomAltura = Random.Range(3, 14);
             Vector3 DestPos = new Vector3(posRandom, posRandomAltura, posRandomLejania);
             Vector3 NewPos = RefPos.position + DestPos;

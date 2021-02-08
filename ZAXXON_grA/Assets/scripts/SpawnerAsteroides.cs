@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrearEscenario : MonoBehaviour
+public class SpawnerAsteroides : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

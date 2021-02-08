@@ -21,6 +21,8 @@ public class Columna : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
+
+
 AumentoVelocidad();
         transform.Translate(Vector3.back * Time.deltaTime * myNewSpeed);
         if(transform.position.z < -10)
@@ -35,7 +37,7 @@ AumentoVelocidad();
         mySpeed = myNewSpeed;
     }
    
-
+    
 }
 
 
