@@ -11,6 +11,7 @@ public class UI : MonoBehaviour
     float tiempo;
     float segundos;
     float minutos;
+   
     void Start()
     {
 

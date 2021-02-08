@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class Columna : MonoBehaviour
 {
-   
+    public GameObject InitGame;
+    private InitGame initGame;
+
     private Vector3 MyPos;
-    public float mySpeed;
-    public float myNewSpeed;
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +25,12 @@ public class Columna : MonoBehaviour
     { 
 
 
-AumentoVelocidad();
-        transform.Translate(Vector3.back * Time.deltaTime * myNewSpeed);
+        //Movimiento de las columnas
+
+        transform.Translate(Vector3.back * Time.deltaTime * 10 );
+       
+        //Destrucción de columnas
+
         if(transform.position.z < -10)
         {
             Destroy(gameObject);
@@ -32,11 +38,7 @@ AumentoVelocidad();
         }
     }
     
-    public void AumentoVelocidad(){
-
-        mySpeed = myNewSpeed;
-    }
-   
+    
     
 }
 

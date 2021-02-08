@@ -48,6 +48,8 @@ public class CrearColumnas : MonoBehaviour
         Instantiate(MyColumn, NewPos, Quaternion.identity);
     }
 
+
+    //Corrutina de instanciador de columnas
     IEnumerator ColumnCorrutine()
     {
 
