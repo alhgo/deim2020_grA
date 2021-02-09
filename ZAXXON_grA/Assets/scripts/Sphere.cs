@@ -11,10 +11,11 @@ public class Sphere : MonoBehaviour
     public float speednave;
     [SerializeField] MeshRenderer visibilidadnave;
     [SerializeField] MeshRenderer visibilidadesfera;
-    AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
 
     //Componentes nave para destrucción.
-
+    public AudioClip golpe;
+    public AudioClip explosion;
     [SerializeField] GameObject Lucesyparticulas;
     
     
@@ -27,6 +28,7 @@ public class Sphere : MonoBehaviour
         transform.position = new Vector3(0, 2, 0);
         speednave = 10;
         audioSource = GetComponent<AudioSource>();
+        
         
     }
 
@@ -78,33 +80,42 @@ public class Sphere : MonoBehaviour
             {              
                 initGame.vidas --; 
                 print(initGame.vidas);  
+                 
+                if(initGame.vidas >=1){
+
+                audioSource.PlayOneShot(golpe,0.7f);
+                }
+                else if(initGame.vidas == 0)
+                {
+                audioSource.PlayOneShot(explosion, 0.3f);
+                }
+
             }
             
+           
         }
 //Restar las vidas al chocar   
     void RestarVidas()
         {
 
          if (initGame.vidas == 0)
-         {
-        initGame.alive = false;
-            }
+        {
+        
+         initGame.alive = false;
+                 
+        }
         }
 //Pregunta al juego si estas vivo o muerto para actuar.
     void AliveOrDead()
         {
         if (initGame.alive == false)
-        {
-            
+        { 
             speednave = 0;
             visibilidadnave.enabled = false;
             visibilidadesfera.enabled = false;
-            Destroy(Lucesyparticulas);
-            
+            Destroy(Lucesyparticulas);    
         }
          }
-    
-
 
 }
 

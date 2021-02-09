@@ -5,8 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UI : MonoBehaviour
 {
+    public GameObject InitGame;
+    private InitGame initGame;
     [SerializeField] Text TextoTiempo;
     [SerializeField] Text TextoPuntuacion;
+    [SerializeField] Text Vidas;
     public float playedTime;
     float tiempo;
     float segundos;
@@ -14,7 +17,7 @@ public class UI : MonoBehaviour
    
     void Start()
     {
-
+        initGame = InitGame.GetComponent<InitGame>();
         playedTime = 0;
 
     }
@@ -27,7 +30,7 @@ public class UI : MonoBehaviour
         TextoTiempo.text = "Tiempo en partida: " + minutos.ToString("00") + ":" + segundos.ToString("00");
         float puntuacion = playedTime * 20;
         TextoPuntuacion.text = "Puntuación: " + puntuacion.ToString("00");
-
+        Vidas.text = "Vidas: " + initGame.vidas.ToString("00");
         
 
 
