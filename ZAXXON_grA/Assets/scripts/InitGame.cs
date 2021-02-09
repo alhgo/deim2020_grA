@@ -5,10 +5,10 @@ using UnityEngine;
 public class InitGame : MonoBehaviour
 {
 
-    public float speed;
+    public float speed ;
     public float dificultad;
     public bool alive;
-
+    public float vidas = 3;
 
 
     // Start is called before the first frame update
@@ -25,6 +25,7 @@ public class InitGame : MonoBehaviour
     {
         AumentoDificultad();
         print(alive);
+      
     }
 
 
@@ -34,17 +35,7 @@ public class InitGame : MonoBehaviour
 
     }
 
-    void AliveOrDead()
-    {
-        if (alive == false)
-        {
-
-
-        }
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        alive = false;
-    }
+   
+   
 }
 

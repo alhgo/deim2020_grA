@@ -15,9 +15,7 @@ public class Columna : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
-        
-        
+       
     }
 
     // Update is called once per frame
@@ -27,7 +25,7 @@ public class Columna : MonoBehaviour
 
         //Movimiento de las columnas
 
-        transform.Translate(Vector3.back * Time.deltaTime * 10 );
+        transform.Translate(Vector3.back * Time.deltaTime * 30 );
        
         //Destrucción de columnas
 

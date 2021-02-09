@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8674086050177391267}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,8 +92,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3371058, y: 7.260565, z: 1}
+  m_Center: {x: 0.008787425, y: 0.8786749, z: 0}
 --- !u!114 &8674086050177391267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ef68f92fdb72459cd3526252c7012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySpeed: 30
-  myNewSpeed: 50
+  InitGame: {fileID: 2246665600590628143, guid: 4b995aa3bc82ffa468287cf8136af891,
+    type: 3}
 --- !u!1001 &3701594101882768775
 PrefabInstance:
   m_ObjectHideFlags: 0
