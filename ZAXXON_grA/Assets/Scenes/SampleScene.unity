@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 31261256}
   - component: {fileID: 31261255}
   m_Layer: 5
-  m_Name: XCoordenate
+  m_Name: Segundos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 12.46
-  m_Text: X
+  m_Text: Seconds
 --- !u!222 &31261256
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -385,7 +385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4b440f170e81bec4aa725fdc02ca4c42, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4b440f170e81bec4aa725fdc02ca4c42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 821659253}
   - component: {fileID: 821659252}
   m_Layer: 5
-  m_Name: YCoordenate
+  m_Name: Distancia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -576,7 +576,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 12.46
-  m_Text: Y
+  m_Text: Distance
 --- !u!222 &821659253
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 1086399113}
   - component: {fileID: 1086399112}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Velocidad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -816,7 +816,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 12.46
-  m_Text: Seconds
+  m_Text: Speed
 --- !u!222 &1086399113
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -896,9 +896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130aea10034004a46836234ee9adaff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeText: {fileID: 1086399112}
-  posX: {fileID: 31261255}
-  posY: {fileID: 821659252}
+  timeText: {fileID: 31261255}
+  distancia: {fileID: 821659252}
+  velocidad: {fileID: 1086399112}
   Nave: {fileID: 1860193538}
 --- !u!1 &1860193538
 GameObject:

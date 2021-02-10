@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class canvasscript : MonoBehaviour
 {
     public Text timeText;
-    public Text posX;
-    public Text posY;
+    public Text distancia;
+    public Text velocidad;
     private Text Text;
     [SerializeField] GameObject Nave;
     private Sphere sphere;
@@ -27,16 +27,17 @@ public class canvasscript : MonoBehaviour
 
    void TextosdelUI()
     {
-        Nave = GameObject.Find("Capsule");
-        Nave.GetComponent<Transform>();
-        float PosX = Nave.transform.position.x;
-        float PosY = Nave.transform.position.y;
+
+        sphere = Nave.GetComponent<Sphere>();
         double timePass = Time.time;
-        string coorX = PosX.ToString("f0");
-        string coorY = PosY.ToString("f0");
+        double lejitos = timePass * sphere.speed;
+
+        string coorDistance = lejitos.ToString("f3");
+        string coorSpeed = sphere.speed.ToString("f0");
         string total = timePass.ToString("f5");
+
         timeText.text = "Time: " + total;
-        posX.text = "X: " + coorX;
-        posY.text = "Y: " + coorY;
+        distancia.text = "Distance: " + coorDistance;
+        velocidad.text = "Speed: " + coorSpeed;
     }
 }

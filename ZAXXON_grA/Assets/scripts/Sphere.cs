@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Sphere : MonoBehaviour
 {
-    public float speed = 2.5f;
+    public float speed = 5f;
 
 
     // Start is called before the first frame update
