@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScrollSuelo : MonoBehaviour
 {
-    
+
     public GameObject InitGame;
     private InitGame initGame;
     [SerializeField] float scrollSpeed;
@@ -25,6 +25,6 @@ public class ScrollSuelo : MonoBehaviour
     {
         float newPos = Mathf.Repeat(Time.time * scrollSpeed, 100);
         transform.position = startPos + Vector3.forward * newPos;
-        print(initGame.speed);
+        
     }
 }

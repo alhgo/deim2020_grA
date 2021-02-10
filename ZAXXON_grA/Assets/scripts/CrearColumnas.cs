@@ -8,13 +8,18 @@ public class CrearColumnas : MonoBehaviour
     [SerializeField] GameObject MyColumn;
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
-        
+
+
+    public GameObject InitGame;
+    private InitGame initGame;
+
     // Start is called before the first frame update
     void Start()
     {
+        initGame = InitGame.GetComponent<InitGame>();
         StartCoroutine("ColumnCorrutine");
         CrearColumnaInicio();
-
+        
     }
 
     // Update is called once per frame
@@ -52,12 +57,15 @@ public class CrearColumnas : MonoBehaviour
     //Corrutina de instanciador de columnas
     IEnumerator ColumnCorrutine()
     {
-
-        for (int n=0; ; n++ )
+        for(int n = 0; ; n++)
         {
             CrearColumna();
             yield return new WaitForSeconds(0.09f);
-           
         }
+        
     }
+   
 }
+
+    
+

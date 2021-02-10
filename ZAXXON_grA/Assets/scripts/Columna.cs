@@ -9,13 +9,16 @@ public class Columna : MonoBehaviour
     private InitGame initGame;
     public float velocidadcolumnas;
     private Vector3 MyPos;
-    
-    
+   
+
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        
+        InitGame = GameObject.Find("InitGame");
+        initGame = InitGame.GetComponent<InitGame>();
+
     }
 
     // Update is called once per frame
@@ -25,7 +28,7 @@ public class Columna : MonoBehaviour
 
         //Movimiento de las columnas
 
-        transform.Translate(Vector3.back * Time.deltaTime * velocidadcolumnas);
+        transform.Translate(Vector3.back * Time.deltaTime * initGame.velocidadnaves);
        
         //Destrucción de columnas
 

@@ -10,11 +10,14 @@ public class UI : MonoBehaviour
     [SerializeField] Text TextoTiempo;
     [SerializeField] Text TextoPuntuacion;
     [SerializeField] Text Vidas;
+    [SerializeField] Text TextoDificultad;
     public float playedTime;
     float tiempo;
     float segundos;
     float minutos;
-   
+    public float puntuacion;
+
+
     void Start()
     {
         initGame = InitGame.GetComponent<InitGame>();
@@ -28,10 +31,22 @@ public class UI : MonoBehaviour
         playedTime += Time.deltaTime;
         ConversorTiempo();
         TextoTiempo.text = "Tiempo en partida: " + minutos.ToString("00") + ":" + segundos.ToString("00");
-        float puntuacion = playedTime * 20;
+        puntuacion = playedTime * 20;
         TextoPuntuacion.text = "Puntuación: " + puntuacion.ToString("00");
         Vidas.text = "Vidas: " + initGame.vidas.ToString("00");
-        
+
+
+        if (initGame.dificultad <= 5)
+        {
+            TextoDificultad.text = "Dificultad: " + initGame.dificultad;
+               
+        }
+        else
+        {
+            TextoDificultad.text = "Dificultad: MODO DIOS";
+
+
+        }
 
 
     }

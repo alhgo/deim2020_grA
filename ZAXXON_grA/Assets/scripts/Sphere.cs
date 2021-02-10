@@ -22,10 +22,6 @@ public class Sphere : MonoBehaviour
     public AudioClip explosion;
     [SerializeField] GameObject Lucesyparticulas;
     
-    
-    
-    
-    
     void Start()
     {
         initGame = InitGame.GetComponent<InitGame>();
@@ -48,7 +44,9 @@ public class Sphere : MonoBehaviour
 
        //Parar el juego al llevar 0 vidas.
         AliveOrDead();
-        
+
+        //Ayuda al jugador si llega a más de 500 de puntuación.
+        AyudaJugadror();
     }
 
     
@@ -84,24 +82,23 @@ public class Sphere : MonoBehaviour
         {
 
             if(target.gameObject.tag == "Enemigo")
-            {          
-                    
-                initGame.vidas --; 
-                print(initGame.vidas);  
-                
+            {
 
-                 
-                if(initGame.vidas >=1)
-                {
-                audioSource.PlayOneShot(golpe,0.7f);
+            initGame.vidas--;
+            print(initGame.vidas);
+
+
+
+            if (initGame.vidas >= 1)
+            {
+                audioSource.PlayOneShot(golpe, 0.7f);
                 StartCoroutine("ParpadeoNave");
-                }
-                else if(initGame.vidas == 0)
-                {
-                audioSource.PlayOneShot(explosion, 0.3f);
-                }
-
             }
+            else if (initGame.vidas == 0)
+            {
+                audioSource.PlayOneShot(explosion, 0.3f);
+            }
+        }
             
            
         }
@@ -151,5 +148,14 @@ public class Sphere : MonoBehaviour
         boxcollideresfera.enabled = true;
         inmunidad.enabled = false;
     }
+    void AyudaJugadror()
+    {
+
+        if (initGame.velocidadnaves == 50)
+        {
+            speednave = 15;
+        }
+    }
+
 }
 
