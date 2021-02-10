@@ -7,7 +7,7 @@ public class Columna : MonoBehaviour
 {
     public GameObject InitGame;
     private InitGame initGame;
-
+    public float velocidadcolumnas;
     private Vector3 MyPos;
     
     
@@ -25,7 +25,7 @@ public class Columna : MonoBehaviour
 
         //Movimiento de las columnas
 
-        transform.Translate(Vector3.back * Time.deltaTime * 30 );
+        transform.Translate(Vector3.back * Time.deltaTime * velocidadcolumnas);
        
         //Destrucción de columnas
 

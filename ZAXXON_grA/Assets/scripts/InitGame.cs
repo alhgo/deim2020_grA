@@ -9,6 +9,8 @@ public class InitGame : MonoBehaviour
     public float dificultad;
     public bool alive;
     public float vidas = 3;
+    public GameObject columnagame;
+    public Columna columna;
 
 
     // Start is called before the first frame update
@@ -17,6 +19,11 @@ public class InitGame : MonoBehaviour
         speed = 30;
         dificultad = 10;
         alive = true;
+       columnagame = GameObject.Find("CocheEnemigo");
+       columna = columnagame.GetComponent<Columna>();
+       columna.velocidadcolumnas = 30;
+
+        
 
     }
 
