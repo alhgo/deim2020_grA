@@ -8,56 +8,68 @@ public class CrearColumnas : MonoBehaviour
     [SerializeField] GameObject MyColumn;
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
+    //Distancia entre columnas
+   [SerializeField] float distObstacle;
+    Vector3 newPos;
+    private float speed;
+    private float temporizador;
+    //Variables para asociarse con un gameObject y un Script de ese gameObject
+    public GameObject Nave;
+    private Sphere sphereMove;
     
-    [SerializeField] int numeroColumna = 4;
+
     // Start is called before the first frame update
     void Start()
     {
+        CrearColumnasIniciales();
         
-        CrearColumnaIniciales();
-        
+        sphereMove = Nave.GetComponent<Sphere>();
         StartCoroutine("ColumnCorrutine");
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-    }
-
-    void CrearColumnaIniciales()
-    {
-        for (int i = 1; i < numeroColumna; i++)
+        if(Input.GetButtonDown("Fire1"))
         {
-            //Creo un nuevo vector3
-            float posRandom = Random.Range(-9.5f, 9.5f);
-            float posProg2 = 0f - 25f * i;
+            CrearColumna();
 
+        }
+        if (sphereMove.speed != 0f) 
+        {
+            speed = sphereMove.speed;
+        }
+        else
+        {
+            StopCoroutine("ColumnCorrutine");
+        }
 
-            //Instancio el prefab en la posición del objeto de referencia
-            //Como tenemos su componente Transform, le indicamos que lo que quiero es su posición
-
-
-
-                //Instancio el prefab en la posición del objeto de referencia
-                //Como tenemos su componente Transform, le indicamos que lo que quiero es su posición
-
-                Vector3 DestPos = new Vector3(posRandom, 0, posProg2);
-                Vector3 NewPos = RefPos.position + DestPos;
-                Instantiate(MyColumn, NewPos, Quaternion.identity);
-                
-            
-            
+    }
+    void CrearColumnasIniciales()
+    {
+        distObstacle = 10f;
+        for (int n = 1; n <= 17; n++)
+        {
+            float randomZ = Random.Range(0f, 30f);
+            newPos = new Vector3(-randomZ, 0, n * distObstacle);
+            Vector3 finalPos = RefPos.position - newPos;
+            Instantiate(MyColumn, finalPos, Quaternion.identity);
         }
     }
-
     void CrearColumna()
     {
-        float posRandom = Random.Range(-9.5f, 9.5f);
-        Vector3 DestPos2 = new Vector3(posRandom, 0, 0);
-        Vector3 NewPos2 = RefPos.position + DestPos2;
-        Instantiate(MyColumn, NewPos2,Quaternion.identity);
+        //Creo un nuevo vector3
+        float posRandom = Random.Range(0f, 30f);
+        Vector3 DestPos = new Vector3(posRandom, 0, 0);
+        Vector3 NewPos = RefPos.position + DestPos;
+        //Instancio el prefab en la posición del objeto de referencia
+        //Como tenemos su componente Transform, le indicamos que lo que quiero es su posición
+        Instantiate(MyColumn, NewPos, Quaternion.identity);
     }
-       IEnumerator ColumnCorrutine()
+
+    IEnumerator ColumnCorrutine()
     {
 
         for (int n=0; ; n++ )
@@ -66,7 +78,10 @@ public class CrearColumnas : MonoBehaviour
             //Intancio el prefab en coordenadas 0,0,0
             //Instantiate(MyColumn);
             CrearColumna();
-            yield return new WaitForSeconds(1);
+            //Relación entre la velocidad de la nave y el tiempo para instanciar columnas
+            temporizador = 1f - (speed * 0.04f);
+            yield return new WaitForSeconds(temporizador);
         }
     }
+   
 }

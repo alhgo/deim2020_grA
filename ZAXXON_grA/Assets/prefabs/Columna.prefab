@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 2388127070130277672}
   m_Layer: 0
   m_Name: Columna
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,7 +153,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 33c8974f2ed452840aca13542849cf88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -201,4 +201,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Nave: {fileID: 0}
-  DestPos: {x: 0, y: 0, z: -1}
+  sphere: {fileID: 0}
+  mySpeed: 0
