@@ -8,64 +8,59 @@ public class CrearColumnas : MonoBehaviour
     [SerializeField] GameObject MyColumn;
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
-    
-    // Start is called before the first frame update
+    [SerializeField] Transform InitPos;
+    private float distcolumna;
+
     void Start()
-    {
+    {   
+        distcolumna = 10;
         StartCoroutine("ColumnCorrutine");
         InicioColumnas();
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+    }
+
+    //creacion de columnas desde el fondo en bucle constante
+        void CrearColumna()
         {
-            CrearColumna();
+            float posRandomx = Random.Range(0f, 30f);
+            float posRandomz = Random.Range(0f, 10f);
+            float posRandomy = Random.Range(0f, 30f);
+            Vector3 DestPos = new Vector3(posRandomx, posRandomy, posRandomz);
+            Vector3 NewPos = RefPos.position + DestPos;
+            //Instancio el prefab en la posición del objeto de referencia
+            //Como tenemos su componente Transform, le indicamos que lo que quiero es su posición
+            Instantiate(MyColumn, NewPos, Quaternion.identity);
         }
 
-    }
-
-    void CrearColumna()
-    {
-        //Creo un nuevo vector3
-        float posRandomx = Random.Range(0f, 40f);
-        float posRandomz = Random.Range(0f, 0f);
-        float posRandomy = Random.Range(0f, 18f);
-        Vector3 DestPos = new Vector3(posRandomx, posRandomy, posRandomz);
-        Vector3 NewPos = RefPos.position + DestPos;
-        //Instancio el prefab en la posición del objeto de referencia
-        //Como tenemos su componente Transform, le indicamos que lo que quiero es su posición
-        Instantiate(MyColumn, NewPos, Quaternion.identity);
-    }
-
-    IEnumerator ColumnCorrutine()
-    {
-
-        for (int n=0; ; n++ )
+        IEnumerator ColumnCorrutine()
         {
+
+            for (int n=0; ; n++ )
+            {
             
             //Intancio el prefab en coordenadas 0,0,0
             //Instantiate(MyColumn);
             CrearColumna();
            
-            yield return new WaitForSeconds(0.1f);
-
-
+            yield return new WaitForSeconds(0.2f);
+            }
         }
-    }
 
-    void InicioColumnas()
-    {for (int n = 0; n < 5; n++)
-    {
-        float posRandomx = Random.Range(0f, 30f);
-        float posRandomz = Random.Range(0f, -100f);
-        float posRandomy = Random.Range(0f, 18f);
-        Vector3 NewPos = new Vector3(posRandomx, posRandomy, posRandomz); 
-        Vector3 finalPos = RefPos.position + NewPos;
-        Instantiate(MyColumn, finalPos, Quaternion.identity);        
-         }     
-         }
+    //creacion de planetas entre la nave y donde se generan de cero.
+        void InicioColumnas()
+        {
+            for (int n = 0; n < 30; n++)
+            {
+            float posRandomx = Random.Range(0f, 30f);
+            float posRandomz = Random.Range(0f, 30f);
+            float posRandomy = Random.Range(0f, 30f);
+            Vector3 NewPos = new Vector3(posRandomx, posRandomy, -n*distcolumna); 
+            Vector3 finalPos = InitPos.position + NewPos;
+            Instantiate(MyColumn, finalPos, Quaternion.identity);
+            }
+        }
 
 }
