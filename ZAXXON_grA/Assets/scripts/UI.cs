@@ -32,7 +32,7 @@ public class UI : MonoBehaviour
         ConversorTiempo();
         TextoTiempo.text = "Tiempo en partida: " + minutos.ToString("00") + ":" + segundos.ToString("00");
         puntuacion = playedTime * 20;
-        TextoPuntuacion.text = "Puntuación: " + puntuacion.ToString("00");
+        TextoPuntuacion.text = puntuacion.ToString("00");
         Vidas.text = "Vidas: " + initGame.vidas.ToString("00");
 
 
