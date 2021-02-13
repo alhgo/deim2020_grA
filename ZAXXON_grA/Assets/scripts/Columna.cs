@@ -17,7 +17,7 @@ public class Columna : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Nave = GameObject.Find("Sphere");
+        Nave = GameObject.Find("StarSparrow12");
 
         
         sphere = Nave.GetComponent<Sphere>();

@@ -32,11 +32,11 @@ public class CrearColumnas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+       /*if(Input.GetButtonDown("Fire1"))
         {
             CrearColumna();
 
-        }
+        }*/
         if (sphereMove.speed != 0f) 
         {
             speed = sphereMove.speed;
