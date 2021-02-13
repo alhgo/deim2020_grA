@@ -202,4 +202,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Nave: {fileID: 0}
   sphere: {fileID: 0}
-  mySpeed: 0
+  mySpeed: 3.16
