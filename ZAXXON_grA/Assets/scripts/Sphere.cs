@@ -1,19 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Sphere : MonoBehaviour
 {
-    public float speed = 5f;
+    //velocidad de movimiento de la nave, no de las columnas
+    private float speed = 25f;
     private Rigidbody rb;
     public GameObject[] vidas;
-    private int life = 3;
+    public int life = 3;
+    public float timeDeath;
+
+    public Timer timer;
+
+    public ScriptGameOver scriptGameOver;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         life = vidas.Length;
+        //timeDeath;
     }
 
 
@@ -58,6 +66,10 @@ public class Sphere : MonoBehaviour
         if(other.gameObject.tag == "enemy")
         {
             life--;
+
+        //Cada vez que el objeto colisione llamará al GameManager(en otro script).
+            FindObjectOfType<GameManager>().GameOver();
+            
         }
     }
 
@@ -68,6 +80,9 @@ public class Sphere : MonoBehaviour
         {
             Destroy(vidas[0].gameObject);
             Destroy(gameObject);
+
+            //var timeStart = timeDeath;
+            //timeDeath.text = "LASTED" + timeDeath;
         }
 
         else if (life < 2)
@@ -79,6 +94,9 @@ public class Sphere : MonoBehaviour
         {
             Destroy(vidas[2].gameObject);
         }
+        
     }
+
+
  }
 

@@ -189,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Nave: {fileID: 0}
   DestPos: {x: 1, y: 0, z: 0}
+  Timer: {fileID: 2974163716742919466, guid: a1487095b40679241b53c0275a3bccaa, type: 3}
 --- !u!135 &5259864043980911669
 SphereCollider:
   m_ObjectHideFlags: 0
