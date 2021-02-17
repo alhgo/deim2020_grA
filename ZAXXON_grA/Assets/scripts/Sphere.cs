@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +16,7 @@ public class Sphere : MonoBehaviour
     [SerializeField] BoxCollider boxcollideresfera;
     [SerializeField] AudioSource audioSource;
     [SerializeField] Animator animator;
+    public GameObject[] spritesVidas;
 
     //Componentes nave para destrucción.
     public AudioClip golpe;
@@ -47,6 +48,9 @@ public class Sphere : MonoBehaviour
 
         //Ayuda al jugador si llega a más de 500 de puntuación.
         AyudaJugadror();
+
+        //Destruir Sprites de los escudos
+        DestruirVidas();
     }
 
     
@@ -85,14 +89,15 @@ public class Sphere : MonoBehaviour
             {
 
             initGame.vidas--;
-            print(initGame.vidas);
-
+            print(initGame.vidas + (" son tus vidas"));
+            
 
 
             if (initGame.vidas >= 1)
             {
                 audioSource.PlayOneShot(golpe, 0.7f);
                 StartCoroutine("ParpadeoNave");
+                
             }
             else if (initGame.vidas == 0)
             {
@@ -114,6 +119,7 @@ public class Sphere : MonoBehaviour
                  
         }
         }
+
 //Pregunta al juego si estas vivo o muerto para actuar.
    
     void AliveOrDead()
@@ -132,7 +138,7 @@ public class Sphere : MonoBehaviour
 
     IEnumerator ParpadeoNave()
     {
-        for (int n = 0; n < 3; n++)
+        for (int n = 0; n < initGame.vidas; n++)
         {           
             boxcollideresfera.enabled = false;
             inmunidad.enabled = true;
@@ -148,6 +154,7 @@ public class Sphere : MonoBehaviour
         boxcollideresfera.enabled = true;
         inmunidad.enabled = false;
     }
+
     void AyudaJugadror()
     {
 
@@ -155,6 +162,27 @@ public class Sphere : MonoBehaviour
         {
             speednave = 15;
         }
+    }
+
+    //Codigo de Daniel
+    void DestruirVidas()
+    {
+        if (initGame.vidas < 4 && initGame.vidas >= 3 )
+        {
+            Destroy(spritesVidas[0].gameObject);
+        
+        }
+
+        else if (initGame.vidas < 3 && initGame.vidas >= 2)
+        {
+            Destroy(spritesVidas[1].gameObject);
+        }
+
+        else if (initGame.vidas < 2 && initGame.vidas >= 1)
+        {
+            Destroy(spritesVidas[2].gameObject);
+        }
+        
     }
 
 }

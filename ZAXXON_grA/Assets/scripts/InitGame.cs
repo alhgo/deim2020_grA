@@ -8,7 +8,7 @@ public class InitGame : MonoBehaviour
     public float speed ;
     public float dificultad;
     public bool alive;
-    public float vidas = 3;
+    public float vidas = 4;
     public float velocidadnaves;
     public GameObject UI;
     private UI ui;
