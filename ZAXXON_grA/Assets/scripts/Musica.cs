@@ -8,7 +8,6 @@ public class Musica : MonoBehaviour
     [SerializeField] AudioSource musicPlayer;
     [SerializeField] AudioClip[] cancion;
     [SerializeField] AudioClip[] golpes;
-
     public Sphere sphere;
 
 //reproducir las canciones aleatoriamente desde el inicio
@@ -16,8 +15,6 @@ public class Musica : MonoBehaviour
     {
         int n = Random.Range(0,cancion.Length);
         musicPlayer.PlayOneShot(cancion[n], 0.2f);
-        //pararMusica();
-            
     }
 
 //cada vez que una cancion se acabe que reproduzca otra aleatoriamente.
@@ -27,10 +24,11 @@ public class Musica : MonoBehaviour
         {
             int n = Random.Range(0,cancion.Length);
             musicPlayer.PlayOneShot(cancion[n], 0.6f);
+            Invoke("pararMusica", 0.5f);
         }
     }
 
-//para la musica con la muerte del personaje (NO FUNCIONA ARREGLAR)
+//parar la musica con la muerte del personaje
     void pararMusica()
             {
             if(sphere.life < 1)
