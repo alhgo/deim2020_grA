@@ -45,7 +45,7 @@ public class ControlMúsica : MonoBehaviour
         if (audioSource.isPlaying == false)
         {
             pistaActualMusica = Random.Range(0,playlistMusical.Length);
-            audioSource.PlayOneShot(playlistMusical[pistaActualMusica]);
+            audioSource.PlayOneShot(playlistMusical[pistaActualMusica], 0.6f);
         }
     }
 

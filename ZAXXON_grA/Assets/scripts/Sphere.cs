@@ -8,6 +8,10 @@ public class Sphere : MonoBehaviour
 
     public GameObject InitGame;
     private InitGame initGame;
+    public GameObject UI;
+    private UI ui;
+
+
     public float speednave;
     [SerializeField] MeshRenderer visibilidadnave;
     [SerializeField] MeshRenderer visibilidadesfera;
@@ -15,22 +19,29 @@ public class Sphere : MonoBehaviour
     [SerializeField] BoxCollider boxcollidernave;
     [SerializeField] BoxCollider boxcollideresfera;
     [SerializeField] AudioSource audioSource;
-    [SerializeField] Animator animator;
+    [SerializeField] Canvas GameOverCanvas;
+    [SerializeField] SpriteRenderer visibilidadExplosion;
     public GameObject[] spritesVidas;
+    public int variablemuerto;
+    
 
     //Componentes nave para destrucción.
     public AudioClip golpe;
     public AudioClip explosion;
+    public AudioClip lowHp;
     [SerializeField] GameObject Lucesyparticulas;
     
     void Start()
     {
+        ui = UI.GetComponent<UI>();
         initGame = InitGame.GetComponent<InitGame>();
+        variablemuerto = 1;
         transform.position = new Vector3(0, 2, 0);
         speednave = 10;
         audioSource = GetComponent<AudioSource>();
-        
-        
+        GameOverCanvas.enabled = false;
+        visibilidadExplosion.enabled = false;
+        StartCoroutine("lowHPSound");
         
     }
 
@@ -50,7 +61,7 @@ public class Sphere : MonoBehaviour
         AyudaJugadror();
 
         //Destruir Sprites de los escudos
-        DestruirVidas();
+        DestruirVidasyAudioLowHP();
     }
 
     
@@ -76,7 +87,7 @@ public class Sphere : MonoBehaviour
         }
          
 //Rotación nave
-         transform.rotation = Quaternion.Euler(desplY * -10, 0 , desplX * -20);
+         transform.rotation = Quaternion.Euler(desplY * -10 * variablemuerto, 0 , desplX * -20 * variablemuerto);
          
         }
 
@@ -101,6 +112,9 @@ public class Sphere : MonoBehaviour
             }
             else if (initGame.vidas == 0)
             {
+                ui.puntuacionfinal = ui.puntuacion;
+                print(ui.puntuacionfinal);
+                StopCoroutine("lowHPSound");
                 audioSource.PlayOneShot(explosion, 0.3f);
             }
         }
@@ -126,10 +140,14 @@ public class Sphere : MonoBehaviour
         {
         if (initGame.alive == false)
         { 
+            variablemuerto = 0;
             speednave = 0;
             visibilidadnave.enabled = false;
             visibilidadesfera.enabled = false;
             Destroy(Lucesyparticulas);    
+            visibilidadExplosion.enabled = true;
+            Invoke ("UIGameOver", 3f);
+           
         }
          }    
 
@@ -148,7 +166,6 @@ public class Sphere : MonoBehaviour
             visibilidadnave.enabled = true;
             visibilidadesfera.enabled = true;
             yield return new WaitForSeconds(0.1f);
-            print("funciono");
         }
         yield return new WaitForSeconds(2f);
         boxcollideresfera.enabled = true;
@@ -165,7 +182,7 @@ public class Sphere : MonoBehaviour
     }
 
     //Codigo de Daniel Ocasar
-    void DestruirVidas()
+    void DestruirVidasyAudioLowHP()
     {
         if (initGame.vidas < 4 && initGame.vidas >= 3 )
         {
@@ -181,8 +198,31 @@ public class Sphere : MonoBehaviour
         else if (initGame.vidas < 2 && initGame.vidas >= 1)
         {
             Destroy(spritesVidas[2].gameObject);
+            
         }
         
+    }
+
+    IEnumerator lowHPSound()
+    {
+        for (int i = 0; ; i++)
+        {
+            if (initGame.vidas < 2)
+                {
+            
+                    audioSource.PlayOneShot(lowHp,3f);
+                    print("FuncionoAudioLow");
+                 } 
+                 yield return new WaitForSeconds(0.65f);
+        }
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    
+
+    void UIGameOver(){
+
+       GameOverCanvas.enabled = true;
     }
 
 }

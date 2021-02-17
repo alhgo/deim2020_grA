@@ -7,10 +7,10 @@ public class UI : MonoBehaviour
 {
     public GameObject InitGame;
     private InitGame initGame;
-    [SerializeField] Text TextoTiempo;
-    [SerializeField] Text TextoPuntuacion;
-    [SerializeField] Text Vidas;
-    [SerializeField] Text TextoDificultad;
+    public Text TextoPuntuacion;
+    
+
+    public float puntuacionfinal;
     public float playedTime;
     float tiempo;
     float segundos;
@@ -21,7 +21,8 @@ public class UI : MonoBehaviour
     void Start()
     {
         initGame = InitGame.GetComponent<InitGame>();
-        playedTime = 0;
+        StartCoroutine("ContadorPuntuacion");
+        
 
     }
 
@@ -29,26 +30,29 @@ public class UI : MonoBehaviour
     {
 
         playedTime += Time.deltaTime;
-        ConversorTiempo();
-        TextoTiempo.text = "Tiempo en partida: " + minutos.ToString("00") + ":" + segundos.ToString("00");
-        puntuacion = playedTime * 20;
-        TextoPuntuacion.text = puntuacion.ToString("00");
-        Vidas.text = "Vidas: " + initGame.vidas.ToString("00");
-
-
-        if (initGame.dificultad <= 5)
+        ConversorTiempo();        
+        
+        print(initGame.vidas);
+        
+        if(initGame.vidas > 0)
         {
-            TextoDificultad.text = "Dificultad: " + initGame.dificultad;
-               
+         TextoPuntuacion.text = puntuacion.ToString("00");
         }
-        else
+        else if(initGame.vidas <= 0)
         {
-            TextoDificultad.text = "Dificultad: MODO DIOS";
-
-
+            TextoPuntuacion.text = puntuacionfinal.ToString("00");
         }
+    }
 
-
+    IEnumerator ContadorPuntuacion()
+    {
+        while(true)
+        {
+            
+         puntuacion = playedTime * 20;   
+         
+         yield return new WaitForSeconds(0.09f);
+        }   
     }
 
     void ConversorTiempo()
@@ -58,4 +62,5 @@ public class UI : MonoBehaviour
             minutos = (int)((playedTime / 60) % 60);
         }
     }
+
 }
