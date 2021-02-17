@@ -10,18 +10,14 @@ public class Sphere : MonoBehaviour
     private Rigidbody rb;
     public GameObject[] vidas;
     public int life = 3;
-    public float timeDeath;
-
-    public Timer timer;
-
-    public ScriptGameOver scriptGameOver;
-    
+    [SerializeField] AudioSource musica;
+    [SerializeField] AudioClip golpe;
+    [SerializeField] AudioClip explosion;
 
     // Start is called before the first frame update
     void Start()
     {
         life = vidas.Length;
-        //timeDeath;
     }
 
 
@@ -60,17 +56,24 @@ public class Sphere : MonoBehaviour
     }
 
 
-    //colision de nave con planetas y resta de vidas por colision
+    //colision de nave con planetas, resta de vidas por colision y sonido de colisiones y explosion.
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "enemy")
-        {
-            life--;
+            if(other.gameObject.tag == "enemy")
+            {
+                life--;
 
-        //Cada vez que el objeto colisione llamará al GameManager(en otro script).
-            FindObjectOfType<GameManager>().GameOver();
-            
-        }
+
+                if(life < 3 && life > 0)
+                {  
+                    musica.PlayOneShot(golpe, 1f);
+                }
+                
+                else
+                {  
+                    musica.PlayOneShot(explosion, 1f);
+                }
+            }
     }
 
     //Destruccion de los sprites y de la nave en funcion de la cantidad de vidas.
@@ -80,9 +83,6 @@ public class Sphere : MonoBehaviour
         {
             Destroy(vidas[0].gameObject);
             Destroy(gameObject);
-
-            //var timeStart = timeDeath;
-            //timeDeath.text = "LASTED" + timeDeath;
         }
 
         else if (life < 2)
@@ -96,7 +96,6 @@ public class Sphere : MonoBehaviour
         }
         
     }
-
 
  }
 

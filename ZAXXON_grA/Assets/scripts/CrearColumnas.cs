@@ -11,15 +11,19 @@ public class CrearColumnas : MonoBehaviour
     [SerializeField] Transform InitPos;
     private float distcolumna;
 
-   
- 
+    public Timer timer; 
+    public Columna columna;
 
     void Start()
-    {   
+    {
+
         distcolumna = 10;
+
         StartCoroutine("ColumnCorrutine");
+
         InicioColumnas();
-        //StartCoroutine("Dificultad");
+
+        Dificultad();
 
     }
 
@@ -43,18 +47,16 @@ public class CrearColumnas : MonoBehaviour
                 }
             }
 
-            
+        
             void CrearColumna()
             {
                 float posRandomx = Random.Range(0f, 30f);
                 float posRandomz = Random.Range(0f, 10f);
-                float posRandomy = Random.Range(0f, 30f);
+                float posRandomy = Random.Range(0f, 15f);
                 Vector3 DestPos = new Vector3(posRandomx, posRandomy, posRandomz);
                 Vector3 NewPos = RefPos.position + DestPos;
                 Instantiate(MyColumn, NewPos, Quaternion.identity);
             }
-
-       
 
     //creacion de planetas entre la nave y donde se generan de cero.
         void InicioColumnas()
@@ -63,7 +65,7 @@ public class CrearColumnas : MonoBehaviour
             {
             float posRandomx = Random.Range(0f, 30f);
             float posRandomz = Random.Range(0f, 30f);
-            float posRandomy = Random.Range(0f, 30f);
+            float posRandomy = Random.Range(0f, 14f);
             Vector3 NewPos = new Vector3(posRandomx, posRandomy, -n*distcolumna); 
             Vector3 finalPos = InitPos.position + NewPos;
             Instantiate(MyColumn, finalPos, Quaternion.identity);
@@ -71,7 +73,7 @@ public class CrearColumnas : MonoBehaviour
         }
 
         //dificultad incremental del juego (por corregir)
-    /*IEnumerator Dificultad()
+    IEnumerator Dificultad()
     {
         for (int n = 0; ; n++)
             {
@@ -115,6 +117,6 @@ public class CrearColumnas : MonoBehaviour
 
             } 
 
-    }    */
+    }   
         
 }

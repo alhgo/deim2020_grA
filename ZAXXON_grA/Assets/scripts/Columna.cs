@@ -12,22 +12,21 @@ public class Columna : MonoBehaviour
     [SerializeField] Vector3 DestPos;
     private Vector3 FinalPos;
 
-    public GameObject Timer;
-    private Timer timer;
+    
     
     //public GameObject puntuacion;
     
-    float mySpeed;
+    public float mySpeed;
     
     // Start is called before the first frame update
     void Start()
     {
         mySpeed = 20f;
-        timer = Timer.GetComponent<Timer>();
+        //timer = Timer.GetComponent<Timer>();
         
         
-        Debug.Log(timer.puntuacion);
-        StartCoroutine("Dificultad");
+        //Debug.Log(timer.puntuacion);
+        //StartCoroutine("Dificultad");
         
     }
 
@@ -47,7 +46,7 @@ public class Columna : MonoBehaviour
     }
 
      //dificultad incremental del juego (por corregir)
-    IEnumerator Dificultad()
+    /*IEnumerator Dificultad()
     {
         while (true)
             {
@@ -92,5 +91,5 @@ public class Columna : MonoBehaviour
 
             } 
 
-    }    
+    }    */
 }

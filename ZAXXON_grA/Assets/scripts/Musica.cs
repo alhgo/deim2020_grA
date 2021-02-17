@@ -11,49 +11,31 @@ public class Musica : MonoBehaviour
 
     public Sphere sphere;
 
-
+//reproducir las canciones aleatoriamente desde el inicio
     void Start()
     {
         int n = Random.Range(0,cancion.Length);
-        musicPlayer.PlayOneShot(cancion[n]);
-        pararMusica();
+        musicPlayer.PlayOneShot(cancion[n], 0.2f);
+        //pararMusica();
             
     }
 
-    // Update is called once per frame
+//cada vez que una cancion se acabe que reproduzca otra aleatoriamente.
     void Update()
     {
         if(musicPlayer.isPlaying == false)
         {
             int n = Random.Range(0,cancion.Length);
-            musicPlayer.PlayOneShot(cancion[n]);
+            musicPlayer.PlayOneShot(cancion[n], 0.6f);
         }
     }
 
-    void sonidoColisiones()
-    {
-        if(sphere.gameObject.tag == "enemy" && sphere.life < 3)
-        {  
-            musicPlayer.PlayOneShot(golpes[2]);
-        }
-        
-        else if(sphere.gameObject.tag == "enemy" && sphere.life < 2)
-        {
-            musicPlayer.PlayOneShot(golpes[1]);
-        }
-
-        else if (sphere.gameObject.tag == "enemy" && sphere.life < 1);
-        {
-            musicPlayer.PlayOneShot(golpes[0]);
-        }
-    }
-
+//para la musica con la muerte del personaje (NO FUNCIONA ARREGLAR)
     void pararMusica()
             {
             if(sphere.life < 1)
             {
-                musicPlayer.mute = !musicPlayer.mute;
+                musicPlayer.Stop();
             }
             }
-   
 }
