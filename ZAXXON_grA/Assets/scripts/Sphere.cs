@@ -164,7 +164,7 @@ public class Sphere : MonoBehaviour
         }
     }
 
-    //Codigo de Daniel
+    //Codigo de Daniel Ocasar
     void DestruirVidas()
     {
         if (initGame.vidas < 4 && initGame.vidas >= 3 )

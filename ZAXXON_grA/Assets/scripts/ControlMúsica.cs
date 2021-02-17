@@ -8,13 +8,17 @@ public class ControlMúsica : MonoBehaviour
     
     public GameObject InitGame;
     private InitGame initGame;
-     AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
+    public AudioClip[] playlistMusical;
+    public int pistaActualMusica;
+
     // Start is called before the first frame update
     void Start()
     {
         initGame = InitGame.GetComponent<InitGame>();
         audioSource = GetComponent<AudioSource>();
 
+       
         
     }
 
@@ -22,6 +26,7 @@ public class ControlMúsica : MonoBehaviour
     void Update()
     {
         PararMusica();
+        MusicaAleatoria();
     }
 
     void PararMusica(){
@@ -30,6 +35,17 @@ public class ControlMúsica : MonoBehaviour
         {
             audioSource.Stop();
            
+        }
+    }
+
+//Selector aleatorio de la música del nivel.
+
+    void MusicaAleatoria(){
+
+        if (audioSource.isPlaying == false)
+        {
+            pistaActualMusica = Random.Range(0,playlistMusical.Length);
+            audioSource.PlayOneShot(playlistMusical[pistaActualMusica]);
         }
     }
 
