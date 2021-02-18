@@ -8,8 +8,8 @@ public class PlaneOffset : MonoBehaviour
     Renderer rend;
    
     float offset = 0;
-
-   
+    private GameObject Nave;
+    Sphere sphere;
 
     
     // Start is called before the first frame update
@@ -17,7 +17,8 @@ public class PlaneOffset : MonoBehaviour
     {
         //Asignamos el componente Renderer
         rend = GetComponent<Renderer>();
-
+        Nave = GameObject.Find("StarSparrow12");
+        sphere = Nave.GetComponent<Sphere>();
        
     }
 
@@ -32,5 +33,10 @@ public class PlaneOffset : MonoBehaviour
         //Desplazamos la textura albedo y la normal
         rend.material.SetTextureOffset("_MainTex", despl);
         rend.material.SetTextureOffset("_BumpMap", despl);
+
+        if (sphere.speed==0)
+        {
+            offset = 0;
+        }
     }
 }
