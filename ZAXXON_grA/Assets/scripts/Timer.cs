@@ -11,12 +11,13 @@ public class Timer : MonoBehaviour
     [SerializeField] Text textBox;
     [SerializeField] Text textPunt;
     public bool paused = false;
+    
+    public GameOverManager gameOverManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -24,9 +25,9 @@ public class Timer : MonoBehaviour
         {
             timeStart += Time.deltaTime;
             textBox.text = timeStart.ToString("F2");
-            puntuacion = timeStart * 20;
+            puntuacion = Mathf.Round(timeStart * 20);
             textPunt.text = puntuacion.ToString("00");
-
+            
 
 
          //Parar el tiempo con el start.
@@ -39,9 +40,7 @@ public class Timer : MonoBehaviour
                 Time.timeScale = 0;
             paused = !paused; 
             }
-
         }
-
 
 
 

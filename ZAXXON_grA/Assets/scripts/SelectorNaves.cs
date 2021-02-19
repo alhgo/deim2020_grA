@@ -8,6 +8,11 @@ public class SelectorNaves : MonoBehaviour
     [SerializeField]private Button botonSiguiente;
     private int naveActual;
     private int i;
+
+
+    void start()
+    {
+    }
     
     private void Awake()
     {
@@ -33,6 +38,6 @@ public class SelectorNaves : MonoBehaviour
 
      public void ReturnMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
+        SceneManager.LoadScene("Menu");
     }
 }

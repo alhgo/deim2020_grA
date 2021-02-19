@@ -13,6 +13,7 @@ public class Sphere : MonoBehaviour
     [SerializeField] AudioSource musica;
     [SerializeField] AudioClip golpe;
     [SerializeField] AudioClip explosion;
+    [SerializeField] AudioClip muerte;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class Sphere : MonoBehaviour
 
         //llamar a mover nave
         MoverNave();
+
 
     }
     
@@ -76,12 +78,15 @@ public class Sphere : MonoBehaviour
             }
     }
 
-    //Destruccion de los sprites y de la nave en funcion de la cantidad de vidas.
+    //Destruccion de los sprites y de la nave en funcion de la cantidad de vidas, llamada al canvas de gameover, parar musica y reproducir una nueva.
     void DestruirVidas()
     {
-        if (life < 1)
+        if (life <= 0)
         {
             Destroy(vidas[0].gameObject);
+            GameOverManager.gameOverManager.CallGameOver ();
+            musica.Stop();
+            musica.PlayOneShot(muerte, 1f);
             Destroy(gameObject);
         }
 

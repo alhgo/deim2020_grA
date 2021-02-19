@@ -17,14 +17,16 @@ public class CrearColumnas : MonoBehaviour
     void Start()
     {
 
+        timer = gameObject.GetComponent<Timer>();
+        columna = gameObject.GetComponent<Columna>();
+
         distcolumna = 10;
 
         StartCoroutine("ColumnCorrutine");
 
         InicioColumnas();
 
-        Dificultad();
-
+        StartCoroutine("Dificultad");
     }
 
     void Update()
@@ -34,12 +36,8 @@ public class CrearColumnas : MonoBehaviour
     //creacion de columnas desde el fondo en bucle constante
         IEnumerator ColumnCorrutine()
             {
-
                 for (int n=0; ; n++ )
                 {
-                
-                //Intancio el prefab en coordenadas 0,0,0
-                //Instantiate(MyColumn);
                 CrearColumna();
                 {
                     yield return new WaitForSeconds(0.4f);
@@ -73,50 +71,47 @@ public class CrearColumnas : MonoBehaviour
         }
 
         //dificultad incremental del juego (por corregir)
-    IEnumerator Dificultad()
-    {
-        for (int n = 0; ; n++)
-            {
-                if (timer.puntuacion <= 100)
+        IEnumerator Dificultad()
+        {
+            while(true)
                 {
-                    columna.mySpeed = 20f;
-                    print("Tu velocidad es =" + columna.mySpeed);
-                }
+                    if (timer.puntuacion <= 100)
+                    {
+                        columna.mySpeed = 20f;
+                        print("Tu velocidad es =" + columna.mySpeed);
+                    }
 
-                else if (timer.puntuacion >= 100 && timer.puntuacion <= 300)
-                {
-                    columna.mySpeed = 50f;
-                    print("Tu velocidad es =" + columna.mySpeed);
-                }
+                    else if (timer.puntuacion >= 100 && timer.puntuacion <= 300)
+                    {
+                        columna.mySpeed = 50f;
+                        print("Tu velocidad es =" + columna.mySpeed);
+                    }
 
-                else if (timer.puntuacion >= 300 && timer.puntuacion <= 500)
-                {
-                    columna.mySpeed = 75f;
-                    print("Tu velocidad es =" + columna.mySpeed);
-                }
+                    else if (timer.puntuacion >= 300 && timer.puntuacion <= 500)
+                    {
+                        columna.mySpeed = 75f;
+                        print("Tu velocidad es =" + columna.mySpeed);
+                    }
 
-                else if (timer.puntuacion >= 500 && timer.puntuacion <= 700)
-                {
-                    columna.mySpeed = 90f;
-                    print("Tu velocidad es =" + columna.mySpeed);
-                }
+                    else if (timer.puntuacion >= 500 && timer.puntuacion <= 700)
+                    {
+                        columna.mySpeed = 90f;
+                        print("Tu velocidad es =" + columna.mySpeed);
+                    }
 
-                else if (timer.puntuacion >= 700 && timer.puntuacion <= 1000)
-                {
-                    columna.mySpeed = 110f;
-                    print("Tu velocidad es =" + columna.mySpeed);
-                }
-                
-                else if (timer.puntuacion >= 1000f)
-                {
-                    columna.mySpeed = 130f;
-                    print("Tu velocidad es =" + columna.mySpeed);
-                }
-                
-                yield return new WaitForSeconds(0.1f);
-
-            } 
-
-    }   
-        
+                    else if (timer.puntuacion >= 700 && timer.puntuacion <= 1000)
+                    {
+                        columna.mySpeed = 110f;
+                        print("Tu velocidad es =" + columna.mySpeed);
+                    }
+                    
+                    else if (timer.puntuacion >= 1000f)
+                    {
+                        columna.mySpeed = 130f;
+                        print("Tu velocidad es =" + columna.mySpeed);
+                    }
+                    
+                    yield return new WaitForSeconds(0.1f);
+                } 
+        }
 }
