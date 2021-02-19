@@ -6,7 +6,7 @@ public class InitGame : MonoBehaviour
 {
 
     public float speed ;
-    public float dificultad;
+    
     public bool alive;
     public float vidas = 4;
     public float velocidadnaves;
@@ -21,9 +21,8 @@ public class InitGame : MonoBehaviour
         ui = UI.GetComponent<UI>();
 
 
-        speed = 30;
+        speed = 45;
         alive = true;
-        velocidadnaves = 30;
 
         StartCoroutine("AumentoDificultad");
 
@@ -46,53 +45,53 @@ public class InitGame : MonoBehaviour
         { 
             if (ui.puntuacion <= 100)
             {
-                velocidadnaves= 20;
-                dificultad = 1;
+                velocidadnaves= 30;
+                
                 print("Tu velocidad es = " + velocidadnaves);
             }
             else if (ui.puntuacion >= 200 && ui.puntuacion <= 400)
             {
-                velocidadnaves = 25;
+                velocidadnaves = 35;
                 print("Tu velocidad es = " + velocidadnaves);
             }
             else if (ui.puntuacion >= 400 && ui.puntuacion <= 600)
             {
-                velocidadnaves = 30;
-                dificultad = 2;
+                velocidadnaves = 45;
+                
                 print("Tu velocidad es = " + velocidadnaves);
             }
             else if (ui.puntuacion >= 600 && ui.puntuacion <= 700)
             {
-                velocidadnaves = 35;
+                velocidadnaves = 55;
                 print("Tu velocidad es = " + velocidadnaves);
             }
             else if (ui.puntuacion >= 700 && ui.puntuacion <= 800)
             {
-                velocidadnaves = 40;
-                dificultad = 3;
+                velocidadnaves = 70;
+               
                 print("Tu velocidad es = " + velocidadnaves);
             }
             else if (ui.puntuacion >= 800 && ui.puntuacion <= 900)
             {
-                velocidadnaves = 45;
+                velocidadnaves = 85;
                 print("Tu velocidad es = " + velocidadnaves);
             }
             else if (ui.puntuacion >= 900 && ui.puntuacion <= 1000)
             {
-                velocidadnaves = 50;
-                dificultad = 4;
+                velocidadnaves = 95;
+               
                 print("Tu velocidad es = " + velocidadnaves);
             }
             else if (ui.puntuacion >= 1000 && ui.puntuacion <= 1200)
             {
-                velocidadnaves = 70;
-                dificultad = 5;
+                velocidadnaves = 115;
+                
                 print("Tu velocidad es = " + velocidadnaves);
             }
             else if (ui.puntuacion >= 1200f)
             {
-                velocidadnaves = 90;
-                dificultad = 6;
+                velocidadnaves = 130;
+                
                 print("Tu velocidad es = " + velocidadnaves);
             }
             yield return new WaitForSeconds(0.1f);

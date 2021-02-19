@@ -8,6 +8,7 @@ public class UI : MonoBehaviour
     public GameObject InitGame;
     private InitGame initGame;
     public Text TextoPuntuacion;
+    public Text TextoVelocidad;
     
 
     public float puntuacionfinal;
@@ -37,10 +38,13 @@ public class UI : MonoBehaviour
         if(initGame.vidas > 0)
         {
          TextoPuntuacion.text = puntuacion.ToString("00");
+         TextoVelocidad.text = initGame.velocidadnaves.ToString("00" + "Km/h");
         }
         else if(initGame.vidas <= 0)
         {
             TextoPuntuacion.text = puntuacionfinal.ToString("00");
+            TextoVelocidad.text = "0 Km/h";
+
         }
     }
 

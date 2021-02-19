@@ -21,6 +21,8 @@ public class Sphere : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] Canvas GameOverCanvas;
     [SerializeField] SpriteRenderer visibilidadExplosion;
+    [SerializeField] GameObject explosionparticulas;
+    [SerializeField] GameObject explosionparticulas2;
     public GameObject[] spritesVidas;
     public int variablemuerto;
     
@@ -42,6 +44,8 @@ public class Sphere : MonoBehaviour
         GameOverCanvas.enabled = false;
         visibilidadExplosion.enabled = false;
         StartCoroutine("lowHPSound");
+        explosionparticulas.SetActive(false);
+        explosionparticulas2.SetActive(false);
         
     }
 
@@ -112,10 +116,14 @@ public class Sphere : MonoBehaviour
             }
             else if (initGame.vidas == 0)
             {
+
                 ui.puntuacionfinal = ui.puntuacion;
                 print(ui.puntuacionfinal);
                 StopCoroutine("lowHPSound");
                 audioSource.PlayOneShot(explosion, 0.3f);
+                explosionparticulas.SetActive(true);
+                explosionparticulas2.SetActive(true);
+
             }
         }
             
@@ -177,7 +185,7 @@ public class Sphere : MonoBehaviour
 
         if (initGame.velocidadnaves == 50)
         {
-            speednave = 15;
+            speednave = 75;
         }
     }
 
