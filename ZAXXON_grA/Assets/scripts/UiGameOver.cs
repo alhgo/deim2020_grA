@@ -32,7 +32,10 @@ public class UiGameOver : MonoBehaviour
 
     public void ReiniciarJuego()
     {
+        SceneManager.LoadScene(1);
+    }
+    public void MenuPrincipal()
+    {
         SceneManager.LoadScene(0);
     }
-
 }

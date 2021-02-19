@@ -1630,7 +1630,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FaceTex:
-        m_Texture: {fileID: 2800000, guid: f9d221be2f25a7341892bc351f7ea767, type: 3}
+        m_Texture: {fileID: 2800000, guid: c1619405a519297469daeb7feb4c86d7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -1643,7 +1643,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Ambient: 0.5
-    - _Bevel: 0.626
+    - _Bevel: 1
     - _BevelClamp: 0.602
     - _BevelOffset: -0.415
     - _BevelRoundness: 1
@@ -1652,7 +1652,7 @@ Material:
     - _BumpOutline: 0.763
     - _ColorMask: 15
     - _Diffuse: 0.5
-    - _FaceDilate: 0
+    - _FaceDilate: 1
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.902
@@ -1663,15 +1663,15 @@ Material:
     - _LightAngle: 3.1416
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
-    - _OutlineSoftness: 0.047
+    - _OutlineSoftness: 1
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
     - _OutlineWidth: 1
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.7290401
-    - _ScaleRatioB: 0.46546787
-    - _ScaleRatioC: 0.73125
+    - _ScaleRatioA: 0.28235295
+    - _ScaleRatioB: 0
+    - _ScaleRatioC: 0
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -1695,8 +1695,8 @@ Material:
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
-    - _FaceColor: {r: 0.67836636, g: 1, b: 0.5424528, a: 1}
-    - _GlowColor: {r: 0.15419188, g: 0.5188679, b: 0.15419188, a: 0.5}
+    - _FaceColor: {r: 0.8301887, g: 0.22836229, b: 0, a: 1}
+    - _GlowColor: {r: 1, g: 0.32607815, b: 0.21226418, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
