@@ -10,14 +10,18 @@ public class CrearColumnas : MonoBehaviour
     [SerializeField] Transform RefPos;
     [SerializeField] Transform InitPos;
     private float distcolumna;
+    public float aumentoDificultadYield;
+    
 
-    public Timer timer; 
     public Columna columna;
+    public GameObject InitGame;
+    private InitGame initGame;
 
     void Start()
     {
+        InitGame = GameObject.Find("InitGame");
+        initGame = InitGame.GetComponent<InitGame>();
 
-        timer = gameObject.GetComponent<Timer>();
         columna = gameObject.GetComponent<Columna>();
 
         distcolumna = 10;
@@ -26,7 +30,7 @@ public class CrearColumnas : MonoBehaviour
 
         InicioColumnas();
 
-        StartCoroutine("Dificultad");
+
     }
 
     void Update()
@@ -35,17 +39,17 @@ public class CrearColumnas : MonoBehaviour
 
     //creacion de columnas desde el fondo en bucle constante
         IEnumerator ColumnCorrutine()
+       {
+            for(int n = 0; ; n++)
             {
-                for (int n=0; ; n++ )
-                {
-                CrearColumna();
-                {
-                    yield return new WaitForSeconds(0.4f);
-                }
-                }
+            aumentoDificultadYield = initGame.velNaves * 0.00153020234f;
+            CrearColumna();
+            print(aumentoDificultadYield);
+            yield return new WaitForSeconds(0.25f - aumentoDificultadYield);
             }
+       }
 
-        
+
             void CrearColumna()
             {
                 float posRandomx = Random.Range(0f, 30f);
@@ -70,48 +74,5 @@ public class CrearColumnas : MonoBehaviour
             }
         }
 
-        //dificultad incremental del juego (por corregir)
-        IEnumerator Dificultad()
-        {
-            while(true)
-                {
-                    if (timer.puntuacion <= 100)
-                    {
-                        columna.mySpeed = 20f;
-                        print("Tu velocidad es =" + columna.mySpeed);
-                    }
 
-                    else if (timer.puntuacion >= 100 && timer.puntuacion <= 300)
-                    {
-                        columna.mySpeed = 50f;
-                        print("Tu velocidad es =" + columna.mySpeed);
-                    }
-
-                    else if (timer.puntuacion >= 300 && timer.puntuacion <= 500)
-                    {
-                        columna.mySpeed = 75f;
-                        print("Tu velocidad es =" + columna.mySpeed);
-                    }
-
-                    else if (timer.puntuacion >= 500 && timer.puntuacion <= 700)
-                    {
-                        columna.mySpeed = 90f;
-                        print("Tu velocidad es =" + columna.mySpeed);
-                    }
-
-                    else if (timer.puntuacion >= 700 && timer.puntuacion <= 1000)
-                    {
-                        columna.mySpeed = 110f;
-                        print("Tu velocidad es =" + columna.mySpeed);
-                    }
-                    
-                    else if (timer.puntuacion >= 1000f)
-                    {
-                        columna.mySpeed = 130f;
-                        print("Tu velocidad es =" + columna.mySpeed);
-                    }
-                    
-                    yield return new WaitForSeconds(0.1f);
-                } 
-        }
 }

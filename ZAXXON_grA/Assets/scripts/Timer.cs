@@ -25,10 +25,8 @@ public class Timer : MonoBehaviour
         {
             timeStart += Time.deltaTime;
             textBox.text = timeStart.ToString("F2");
-            puntuacion = Mathf.Round(timeStart * 20);
+            puntuacion = timeStart * 20;
             textPunt.text = puntuacion.ToString("00");
-            
-
 
          //Parar el tiempo con el start.
             if (Input.GetButtonDown("Start"))

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43075326, g: 0.16518512, b: 0.39122438, a: 1}
+  m_IndirectSpecularColor: {r: 0.29025936, g: 0.10316328, b: 0.2688878, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -308,7 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &180569875
 GameObject:
@@ -1521,7 +1521,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &652115219
 GameObject:
@@ -1753,6 +1753,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673693676}
   m_CullTransparentMesh: 0
+--- !u!1 &701013183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701013185}
+  - component: {fileID: 701013184}
+  m_Layer: 0
+  m_Name: InitGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &701013184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701013183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5bef746f86fcb419136e245b93db84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velNaves: 0
+  timeStart: 0
+  puntuacion: 0
+  textBox: {fileID: 2025832788}
+  textPunt: {fileID: 1687570841}
+  paused: 0
+  Columna: {fileID: 1667685384}
+  gameOverManager: {fileID: 180569877}
+--- !u!4 &701013185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701013183}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.19986904, y: 5.415287, z: -3.0679903}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,7 +1877,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.671115e+34, y: 0, z: 0, w: 1.04e-43}
+  m_BoundingSphereOverride: {x: 1.9348216e-19, y: 1.1502432e+21, z: 7.536398e+11,
+    w: 7.0090398e+28}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -7027,18 +7079,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotateSpeed: 5
---- !u!114 &963194231 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2974163716742919468, guid: a1487095b40679241b53c0275a3bccaa,
-    type: 3}
-  m_PrefabInstance: {fileID: 2974163717697575003}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df881cb8494c5344ba9470f43d1ae1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &977993886
 GameObject:
   m_ObjectHideFlags: 0
@@ -7340,7 +7380,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 1.15e-43}
+  m_BoundingSphereOverride: {x: 5.51e-43, y: -4.1498676e+30, z: 5.51e-43, w: 7.67e-43}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -8533,8 +8573,9 @@ MonoBehaviour:
     type: 3}
   RefPos: {fileID: 1667685386}
   InitPos: {fileID: 480812352}
-  timer: {fileID: 963194231}
+  aumentoDificultadYield: 0
   columna: {fileID: 2388127070130277672, guid: c78899a646417e84099aebc205842f83, type: 3}
+  InitGame: {fileID: 701013183}
 --- !u!4 &1667685386
 Transform:
   m_ObjectHideFlags: 0
@@ -9385,5 +9426,6 @@ PrefabInstance:
       propertyPath: playerPosition
       value: 
       objectReference: {fileID: 653857218}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2974163716742919468, guid: a1487095b40679241b53c0275a3bccaa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a1487095b40679241b53c0275a3bccaa, type: 3}
