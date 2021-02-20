@@ -19,7 +19,7 @@ public class Sphere : MonoBehaviour
     [SerializeField] BoxCollider boxcollidernave;
     [SerializeField] BoxCollider boxcollideresfera;
     [SerializeField] AudioSource audioSource;
-    [SerializeField] Canvas GameOverCanvas;
+    [SerializeField] GameObject GameOverCanvas;
     [SerializeField] SpriteRenderer visibilidadExplosion;
     [SerializeField] GameObject explosionparticulas;
     [SerializeField] GameObject explosionparticulas2;
@@ -41,7 +41,7 @@ public class Sphere : MonoBehaviour
         transform.position = new Vector3(0, 2, 0);
         speednave = 10;
         audioSource = GetComponent<AudioSource>();
-        GameOverCanvas.enabled = false;
+        GameOverCanvas.SetActive (false);
         visibilidadExplosion.enabled = false;
         StartCoroutine("lowHPSound");
         explosionparticulas.SetActive(false);
@@ -118,7 +118,6 @@ public class Sphere : MonoBehaviour
             {
 
                 ui.puntuacionfinal = ui.puntuacion;
-                print(ui.puntuacionfinal);
                 StopCoroutine("lowHPSound");
                 audioSource.PlayOneShot(explosion, 0.3f);
                 explosionparticulas.SetActive(true);
@@ -230,7 +229,7 @@ public class Sphere : MonoBehaviour
 
     void UIGameOver(){
 
-       GameOverCanvas.enabled = true;
+       GameOverCanvas.SetActive(true);
     }
 
 }

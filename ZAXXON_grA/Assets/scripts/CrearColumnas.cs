@@ -34,7 +34,7 @@ public class CrearColumnas : MonoBehaviour
     {
       
         
-        for (int n = 0; n <= 60; n++ )
+        for (int n = 0; n <= 40; n++ )
         {
             randomizadorObstaculos =Random.Range(0,MyColumn.Length);
             float posRandom = Random.Range(-15, 15);
@@ -67,7 +67,7 @@ public class CrearColumnas : MonoBehaviour
             aumentodificultadYield = initGame.velocidadnaves * 0.00153020234f;
             CrearColumna();
             print(aumentodificultadYield);
-            yield return new WaitForSeconds(0.25f - aumentodificultadYield);
+            yield return new WaitForSeconds(0.28f - aumentodificultadYield);
         }
         
     }
