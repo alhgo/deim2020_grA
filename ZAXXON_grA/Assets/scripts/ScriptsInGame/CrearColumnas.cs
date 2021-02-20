@@ -9,8 +9,8 @@ public class CrearColumnas : MonoBehaviour
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
 
-    private int randomizadorObstaculos;
 
+    private int randomizadorObstaculos;
     public float aumentodificultadYield;
 
     public GameObject InitGame;
@@ -30,8 +30,11 @@ public class CrearColumnas : MonoBehaviour
     {
        
     }
-    void CrearColumnaInicio()
-    {
+
+//Método para crear columnas cercanas al jugador
+
+        void CrearColumnaInicio()
+        {
       
         
         for (int n = 0; n <= 40; n++ )
@@ -44,7 +47,9 @@ public class CrearColumnas : MonoBehaviour
             Vector3 NewPos = RefPos.position + DestPos;
             Instantiate(MyColumn[randomizadorObstaculos], NewPos, Quaternion.identity);
         }
-    }
+        }        
+//
+//Método para crear columnas aleatorias.
     void CrearColumna()
     {
          randomizadorObstaculos =Random.Range(0,MyColumn.Length);
@@ -58,8 +63,8 @@ public class CrearColumnas : MonoBehaviour
         Instantiate(MyColumn[randomizadorObstaculos], NewPos,Quaternion.identity);
     }
 
-
-    //Corrutina de instanciador de columnas
+//
+//Corrutina de instanciador de columnas
     IEnumerator ColumnCorrutine()
     {
         for(int n = 0; ; n++)

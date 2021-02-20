@@ -5,13 +5,13 @@ using UnityEngine;
 public class Sphere : MonoBehaviour
 {
 
-
+//Comunicación básica entre scripts.
     public GameObject InitGame;
     private InitGame initGame;
     public GameObject UI;
     private UI ui;
 
-
+//Variables útiles para la nave.
     public float speednave;
     [SerializeField] MeshRenderer visibilidadnave;
     [SerializeField] MeshRenderer visibilidadesfera;
@@ -26,12 +26,12 @@ public class Sphere : MonoBehaviour
     public GameObject[] spritesVidas;
     public int variablemuerto;
     
-
-    //Componentes nave para destrucción.
+//Componentes nave para destrucción.
     public AudioClip golpe;
     public AudioClip explosion;
     public AudioClip lowHp;
     [SerializeField] GameObject Lucesyparticulas;
+    
     
     void Start()
     {
@@ -65,7 +65,7 @@ public class Sphere : MonoBehaviour
         AyudaJugadror();
 
         //Destruir Sprites de los escudos
-        DestruirVidasyAudioLowHP();
+        DestruirVidas();
     }
 
     
@@ -83,19 +83,23 @@ public class Sphere : MonoBehaviour
         {
              transform.Translate(Vector3.right * Time.deltaTime * speednave * desplX, Space.World);
         }
+//
+    //Restringir movimiento en el eje Y
 
-//Restringir movimiento en el eje Y
         if (posY < 10 && posY > 1 || posY < 1 && desplY > 0 || posY > 10 && desplY < 0)
         {
             transform.Translate(Vector3.up * Time.deltaTime * speednave * desplY, Space.World);
         }
-         
-//Rotación nave
+    //
+    //Rotación nave
+
          transform.rotation = Quaternion.Euler(desplY * -10 * variablemuerto, 0 , desplX * -20 * variablemuerto);
          
         }
+//
 
 //Detección de colisión solo con los coches, restar las vidas del jugador y sonidos de choque y explosión.
+
    
     void OnTriggerEnter(Collider target)
         {
@@ -124,11 +128,11 @@ public class Sphere : MonoBehaviour
                 explosionparticulas2.SetActive(true);
 
             }
+        }         
         }
-            
-           
-        }
-//Confirma la muerte del personaje  
+//
+
+//Confirma la muerte del personaje y cambia booleana.
    
     void RestarVidas()
         {
@@ -140,6 +144,7 @@ public class Sphere : MonoBehaviour
                  
         }
         }
+//
 
 //Pregunta al juego si estas vivo o muerto para actuar.
    
@@ -158,8 +163,9 @@ public class Sphere : MonoBehaviour
         }
          }    
 
+//
 
-//Parpadeo de nave mediante animación.
+//Parpadeo de nave mediante animación y corrutina.
 
     IEnumerator ParpadeoNave()
     {
@@ -178,7 +184,9 @@ public class Sphere : MonoBehaviour
         boxcollideresfera.enabled = true;
         inmunidad.enabled = false;
     }
+//
 
+// Ayuda al jugador para poder esquivar mejor los obstaculos más rápidos.
     void AyudaJugadror()
     {
 
@@ -187,9 +195,11 @@ public class Sphere : MonoBehaviour
             speednave = 75;
         }
     }
+//
 
-    //Codigo de Daniel Ocasar
-    void DestruirVidasyAudioLowHP()
+//Codigo de Daniel Ocasar // Destrucción de Sprites al golpear.
+
+    void DestruirVidas()
     {
         if (initGame.vidas < 4 && initGame.vidas >= 3 )
         {
@@ -209,6 +219,9 @@ public class Sphere : MonoBehaviour
         }
         
     }
+//
+
+// Sonido cuando te queda 1HP (Corrutina)
 
     IEnumerator lowHPSound()
     {
@@ -224,8 +237,9 @@ public class Sphere : MonoBehaviour
         }
         yield return new WaitForSeconds(0.5f);
     }
+//   
 
-    
+// Activación del canvas GAME OVER
 
     void UIGameOver(){
 
@@ -233,4 +247,5 @@ public class Sphere : MonoBehaviour
     }
 
 }
+/
 

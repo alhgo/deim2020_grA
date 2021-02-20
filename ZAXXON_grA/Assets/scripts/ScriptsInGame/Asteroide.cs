@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Asteroide : MonoBehaviour
 {
-     public GameObject InitGame;
+    public GameObject InitGame;
     private InitGame initGame;
     // Start is called before the first frame update
     void Start()

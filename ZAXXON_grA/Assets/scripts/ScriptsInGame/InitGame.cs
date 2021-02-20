@@ -38,7 +38,7 @@ public class InitGame : MonoBehaviour
         
     }
 
-
+//Corrutina para el aumento de velocidad.
     IEnumerator AumentoDificultad()
     {
         for (int n = 0; ; n++)
