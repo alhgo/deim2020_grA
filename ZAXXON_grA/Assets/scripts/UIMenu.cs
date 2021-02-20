@@ -10,6 +10,8 @@ public class UIMenu : MonoBehaviour
 
     public GameObject UI;
     private UI ui;
+    [SerializeField] Canvas MenuPrincipal;
+    [SerializeField] Canvas MenuOpciones;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,4 +36,6 @@ public class UIMenu : MonoBehaviour
         Debug.Log("QUIT!");
         Application.Quit();
     }
+
+   
 }
