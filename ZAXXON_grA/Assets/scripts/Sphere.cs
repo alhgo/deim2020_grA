@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Sphere : MonoBehaviour
 {
     public float speed = 2.5f;
-
+    [SerializeField] GameObject[] vidasSprite;
     [SerializeField] Text speedText;
+    int vidas = 3;
     [SerializeField] Text timeText;
 
     private string currentTime;
@@ -75,6 +76,29 @@ public class Sphere : MonoBehaviour
         }
 
 transform.rotation = Quaternion.Euler(desplY * -10, 0 , desplX * -20);
+
+
+    }
+
+
+    void OnTriggerEnter (Collider other){
+
+        if(other.gameObject.tag=="enemigo"){
+
+         if(vidas>=1){
+
+             vidas--;
+             Destroy(vidasSprite[vidas]);
+             print("vidas:"+vidas);
+             
+         }  
+        else{
+            Time.timeScale=0f;
+            print("GameOver");
+        }
+
+        }
+
 
 
     }
