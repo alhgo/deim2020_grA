@@ -8,13 +8,16 @@ public class CrearEnemigos : MonoBehaviour
     [SerializeField] GameObject[] MyEnemigo;
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
+    public float timeEnemigo;
         
     // Start is called before the first frame update
     void Start()
     {
+        //spaceship = Spaceship.GetComponent<Spaceship>();
+        timeEnemigo = 0.08f;
         InicioEnemigo();
         StartCoroutine("EnemigoCorrutine");
-       
+        StartCoroutine("Dificultad");       
     }
 
     // Update is called once per frame
@@ -22,7 +25,7 @@ public class CrearEnemigos : MonoBehaviour
     {
     }
 
-    void CrearEnemigo()
+    void CrearEnemigo(int n)
     {
         //int n = Random.Range(0, 2);
         //Creo un nuevo vector3
@@ -32,30 +35,46 @@ public class CrearEnemigos : MonoBehaviour
         Vector3 NewPos = RefPos.position + DestPos;
         //Instancio el prefab en la posición del objeto de referencia
         //Como tenemos su componente Transform, le indicamos que lo que quiero es su posición
-        Instantiate(MyEnemigo[2], NewPos, Quaternion.Euler(0,180,0));
+        Instantiate(MyEnemigo[n], NewPos, Quaternion.Euler(0,180,0));
     }
 
     void InicioEnemigo(){
-        for (int n = 0; n < 45; n++)
+        for (int i = 0; i < 40; i++)
         {
+            int n = Random.Range(0,MyEnemigo.Length);
             float posRandomX = Random.Range(-15f, 15f);
             float posRandomY = Random.Range(1.5f, 10f);
-            Vector3 posInic = new Vector3(posRandomX, posRandomY, -2*n);
+            Vector3 posInic = new Vector3(posRandomX, posRandomY, -5*i);
             Vector3 posPrincipal = RefPos.position + posInic;
-            Instantiate(MyEnemigo[2],posPrincipal, Quaternion.Euler(0,180,0));
+            Instantiate(MyEnemigo[n],posPrincipal, Quaternion.Euler(0,180,0));
         }
     }
 
     IEnumerator EnemigoCorrutine()
     {
-
-        for (int n=0; ; n++ )
+        while(true)
         {
-            //print(n);
-            //Intancio el prefab en coordenadas 0,0,0
-            //Instantiate(MyColumn);
-            CrearEnemigo();
-            yield return new WaitForSeconds(0.1f);
+            int n = Random.Range(0,MyEnemigo.Length);
+            CrearEnemigo(n);
+            yield return new WaitForSeconds(timeEnemigo);
         }
     }
+
+    //Código con ayuda de Adrián Gil    
+    IEnumerator Dificultad()
+    {      
+        while(true)
+        {
+            print(timeEnemigo);  
+            yield return new WaitForSeconds(40f);
+            if(timeEnemigo >= 0.02f)
+            {            
+                timeEnemigo = timeEnemigo - 0.01f;
+            }
+            else{
+                timeEnemigo = 0.01f;
+            }
+        }
+    }
+
 }

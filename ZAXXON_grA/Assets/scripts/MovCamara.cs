@@ -18,7 +18,7 @@ public class MovCamara : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 camPos = new Vector3(navePos.position.x, navePos.position.y +2, navePos.position.z -4);
+        Vector3 camPos = new Vector3(navePos.position.x, navePos.position.y +2.5f, navePos.position.z -6);
         transform.position = Vector3.SmoothDamp(transform.position, camPos, ref camSpeed, smoothSpeed);
      
     }

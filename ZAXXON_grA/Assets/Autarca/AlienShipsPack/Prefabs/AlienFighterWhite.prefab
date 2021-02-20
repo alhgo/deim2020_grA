@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ef68f92fdb72459cd3526252c7012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Spaceship: {fileID: 100000, guid: f3b36b357c4760743ad6ab651571197f, type: 3}
   DestPos: {x: 0, y: 0, z: 0}
   mySpeed: 0
 --- !u!64 &6702537798718324068
