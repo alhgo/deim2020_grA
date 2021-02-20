@@ -64,7 +64,7 @@ public class CrearColumnas : MonoBehaviour
     {
         for(int n = 0; ; n++)
         {
-            aumentodificultadYield = initGame.velocidadnaves * 0.00173020234f;
+            aumentodificultadYield = initGame.velocidadnaves * 0.00153020234f;
             CrearColumna();
             print(aumentodificultadYield);
             yield return new WaitForSeconds(0.25f - aumentodificultadYield);
