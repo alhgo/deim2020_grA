@@ -21,7 +21,7 @@ public class Camera : MonoBehaviour
     void Update()
     {
         //Con este código, la cámara seguirá al jugador, pero alejado algo en el eje Z
-        Vector3 targetPosition = new Vector3(playerPosition.position.x, playerPosition.position.y + 4f, transform.position.z);
+        Vector3 targetPosition = new Vector3(playerPosition.position.x, playerPosition.position.y + 4f, playerPosition.position.z-4);
 transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref cameraVelocity, smoothVelocity);
     }
 }

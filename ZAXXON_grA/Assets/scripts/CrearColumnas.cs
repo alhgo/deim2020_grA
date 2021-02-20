@@ -21,7 +21,7 @@ public class CrearColumnas : MonoBehaviour
 
 
         //Creo un método que generará las columnas iniciales
-        distObstacle = 8f;
+        distObstacle = 12f;
         CrearColumnasIniciales();
 
         //Iniciamos la corrutina que creará las instancias
@@ -40,8 +40,8 @@ public class CrearColumnas : MonoBehaviour
     //Método que crea las columnas de inicio
     void CrearColumnasIniciales()
     {
-        //Bucle que genera 17 columnas iniciales
-        for (int n = 1; n <= 17; n++)
+        //Bucle que genera 10 columnas iniciales
+        for (int n = 1; n <= 10; n++)
         {
             //Calculo un vector para desplazar en Z la distancia y en X un nº random
             float randomX = Random.Range(0f, -30f);
@@ -74,7 +74,7 @@ public class CrearColumnas : MonoBehaviour
             //Llamo al método que crea las columnas de forma aleatoria
             CrearColumna();
             //Indico a la corrutina que se repita cada segundo
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Sphere : MonoBehaviour
 {
+    public GameObject humo;
+    public GameObject Columna;
+    private Columna columna;
+    Vector3 pos;
     public float speed = 2.5f;
     [SerializeField] GameObject[] vidasSprite;
     [SerializeField] Text speedText;
@@ -16,7 +20,7 @@ public class Sphere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        columna=Columna.GetComponent<Columna>();
     }
 
     // Update is called once per frame
@@ -36,6 +40,7 @@ public class Sphere : MonoBehaviour
 
         timeText.text = currentTime;
 
+        pararDragones();
     }
 
     void MoverNave()
@@ -84,6 +89,7 @@ transform.rotation = Quaternion.Euler(desplY * -10, 0 , desplX * -20);
     void OnTriggerEnter (Collider other){
 
         if(other.gameObject.tag=="enemigo"){
+            Instantiate(humo, pos, Quaternion.identity);
 
          if(vidas>=1){
 
@@ -93,13 +99,31 @@ transform.rotation = Quaternion.Euler(desplY * -10, 0 , desplX * -20);
              
          }  
         else{
-            Time.timeScale=0f;
+            
+            //Time.timeScale=0f;
             print("GameOver");
         }
 
         }
 
 
+   }
+   void pararDragones(){
 
-    }
+if(vidas<=0){
+columna.mySpeed = 0;
+
+
+}
+
+
+   }
+ /* void Texto(){
+        float tiempo += Time.deltaTime;
+        float segundos = (int) tiempo % 60;
+        float minutos = (int) ((tiempo / 60) % 60);
+timeText.Text="TIEMPO JUGANDO: " + minutos.ToString("00") +":" + segundos.ToString("00");
+
+    }*/
+
 }

@@ -14,7 +14,7 @@ public class Columna : MonoBehaviour
     //private Vector3 FinalPos;
 
     //Variable velocidad
-    [SerializeField] float mySpeed;
+    public float mySpeed;
 
 
     // Start is called before the first frame update

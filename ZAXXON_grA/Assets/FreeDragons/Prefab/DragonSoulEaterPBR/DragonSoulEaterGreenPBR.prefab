@@ -1760,7 +1760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1874929922}
   - component: {fileID: 1874929921}
-  - component: {fileID: 7825407800275888107}
+  - component: {fileID: 1851294212625402845}
   m_Layer: 0
   m_Name: DragonSoulEaterGreenPBR
   m_TagString: enemigo
@@ -1803,19 +1803,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &7825407800275888107
-BoxCollider:
+--- !u!64 &1851294212625402845
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874929920}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.7152138, y: 3.8024702, z: 4.927346}
-  m_Center: {x: 0.019032955, y: 2.0349946, z: 0.34648752}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: f14db21b5e70e3d4ab6f0e158099a341, type: 3}
 --- !u!1 &1927132067
 GameObject:
   m_ObjectHideFlags: 0
