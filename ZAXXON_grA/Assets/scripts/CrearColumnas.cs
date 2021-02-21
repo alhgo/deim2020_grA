@@ -8,73 +8,70 @@ public class CrearColumnas : MonoBehaviour
     [SerializeField] GameObject MyColumn;
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
+    [SerializeField] Transform InitPos;
+    private float distcolumna;
+    public float aumentoDificultadYield;
+    
 
+    public Columna columna;
+    public GameObject InitGame;
+    private InitGame initGame;
 
-    //Distancia entre columnas
-    [SerializeField] float distObstacle;
-    //Vector que usaremos para posicionar las columnas de inicio
-    Vector3 newPos;
-        
-    // Start is called before the first frame update
     void Start()
     {
+        InitGame = GameObject.Find("InitGame");
+        initGame = InitGame.GetComponent<InitGame>();
 
+        columna = gameObject.GetComponent<Columna>();
 
-        //Creo un método que generará las columnas iniciales
-        distObstacle = 8f;
-        CrearColumnasIniciales();
+        distcolumna = 10;
 
-        //Iniciamos la corrutina que creará las instancias
         StartCoroutine("ColumnCorrutine");
 
-
+        InicioColumnas();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-
     }
 
-    //Método que crea las columnas de inicio
-    void CrearColumnasIniciales()
-    {
-        //Bucle que genera 17 columnas iniciales
-        for (int n = 1; n <= 17; n++)
-        {
-            //Calculo un vector para desplazar en Z la distancia y en X un nº random
-            float randomX = Random.Range(0f, -30f);
-            newPos = new Vector3(randomX, 0, n * distObstacle);
-            Vector3 finalPos = RefPos.position - newPos;
-            //Instancio la columna
-            Instantiate(MyColumn, finalPos, Quaternion.identity);
-        }
-    }
-
-    void CrearColumna()
-    {
-        //Creo un nuevo vector3 con una posición random en X
-        float posRandom = Random.Range(0f, 30f);
-        Vector3 DestPos = new Vector3(posRandom, 0, 0);
-        Vector3 NewPos = RefPos.position + DestPos;
-        //Instancio el prefab en la posición del objeto de referencia
-        //Como tenemos su componente Transform, le indicamos que lo que quiero es su posición
-        Instantiate(MyColumn, NewPos, Quaternion.identity);
-    }
-
-    //Corrutina que se ejecuta cada cierto tiempo
-    //IMPORTANTE: el intevalo de creación ahora es fijo pero debería depender de la velocidad de la nave
-    IEnumerator ColumnCorrutine()
-    {
-
-        for (int n=0; ; n++ )
-        {
-            
-            //Llamo al método que crea las columnas de forma aleatoria
+    //creacion de columnas desde el fondo en bucle constante
+        IEnumerator ColumnCorrutine()
+       {
+            for(int n = 0; ; n++)
+            {
+            //Aumento de dificultad que me ha enseñado adrian a como hacerlo.
+            aumentoDificultadYield = initGame.velNaves * 0.00153020234f;
             CrearColumna();
-            //Indico a la corrutina que se repita cada segundo
-            yield return new WaitForSeconds(1f);
+            print(aumentoDificultadYield);
+            yield return new WaitForSeconds(0.25f - aumentoDificultadYield);
+            }
+       }
+
+
+        void CrearColumna()
+            {
+                float posRandomx = Random.Range(0f, 30f);
+                float posRandomz = Random.Range(0f, 10f);
+                float posRandomy = Random.Range(0f, 15f);
+                Vector3 DestPos = new Vector3(posRandomx, posRandomy, posRandomz);
+                Vector3 NewPos = RefPos.position + DestPos;
+                Instantiate(MyColumn, NewPos, Quaternion.identity);
+            }
+
+    //creacion de planetas entre la nave y donde se generan de cero.
+        void InicioColumnas()
+        {
+            for (int n = 0; n < 30; n++)
+                {
+                float posRandomx = Random.Range(0f, 30f);
+                float posRandomz = Random.Range(0f, 30f);
+                float posRandomy = Random.Range(0f, 14f);
+                Vector3 NewPos = new Vector3(posRandomx, posRandomy, -n*distcolumna); 
+                Vector3 finalPos = InitPos.position + NewPos;
+                Instantiate(MyColumn, finalPos, Quaternion.identity);
+                }
         }
-    }
+
+
 }

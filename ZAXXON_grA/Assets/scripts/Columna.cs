@@ -3,42 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Columna : MonoBehaviour
 {
-    
-    public GameObject Nave;
+    //public GameObject Nave;
     private Sphere sphere;
-
     private Vector3 MyPos;
-    //[SerializeField] Vector3 DestPos;
-    //private Vector3 FinalPos;
+    [SerializeField] Vector3 DestPos;
+    private Vector3 FinalPos;
+    public GameObject InitGame;
+    private InitGame initGame;
 
-    //Variable velocidad
-    [SerializeField] float mySpeed;
-
+    public float velNaves;
 
     // Start is called before the first frame update
     void Start()
     {
+        InitGame = GameObject.Find("InitGame");
+        initGame = InitGame.GetComponent<InitGame>();
 
-        Nave = GameObject.Find("Spaceship");
-        sphere = Nave.GetComponent<Sphere>();
-        mySpeed = sphere.speed;
-        //mySpeed = 10f;
-        //print(mySpeed);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        //MyPos = transform.position;
-        //FinalPos = MyPos + DestPos * Time.deltaTime * mySpeed;
-        //transform.position = FinalPos;
-        //print(MyPos);
 
-        transform.Translate(Vector3.back * Time.deltaTime * mySpeed);
-
-        if(transform.position.z < -10)
+     //movimiento de las colunas y su destrucción
+       transform.Translate(Vector3.back * Time.deltaTime * initGame.velNaves);
+    
+        if(transform.position.z < -20)
         {
             Destroy(gameObject);
         }
