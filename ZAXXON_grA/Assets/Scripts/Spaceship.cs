@@ -17,6 +17,7 @@ public class Spaceship : MonoBehaviour
     [SerializeField] MeshRenderer naveMesh;
     [SerializeField] GameObject escudoHUD;
     [SerializeField] GameObject energiaHUD;
+    [SerializeField] GameObject menuPausa;
     [SerializeField] AudioSource escudoSound;
     [SerializeField] VideoPlayer fondo;
     [SerializeField] AudioClip escudoSFX;
@@ -77,7 +78,7 @@ public class Spaceship : MonoBehaviour
         tiempo += Time.deltaTime;
         segundos = (int) tiempo % 60;
         minutos = (int) ((tiempo / 60) % 60);
-        if(vidas >= 0)
+        if(vidas >= 0 && menuPausa.activeInHierarchy==false)
         {
             score += (int) tiempo * (vidas+1);
         }   
@@ -123,7 +124,7 @@ public class Spaceship : MonoBehaviour
         for(int n = 100; n>=0; n--)
         {
             energiaText.SetText("ENERGIA RESTANTE: "+ n + "%");
-            yield return new WaitForSeconds(0.03f);
+            yield return new WaitForSeconds(0.02f);
         }
         yield return new WaitForSeconds(0.1f);
         energiaHUD.SetActive(false);

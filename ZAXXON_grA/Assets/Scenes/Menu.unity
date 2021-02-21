@@ -624,7 +624,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 292511238}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1016928962}
+        m_MethodName: SubirEfectos
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &239958209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2664,6 +2675,8 @@ MonoBehaviour:
   MusicaCreditos: {fileID: 8300000, guid: ea5d9d1390d541a4e95d6662f7c3f1ab, type: 3}
   SFXMover: {fileID: 8300000, guid: 8c258dca7e08fb1438113b0b75348f71, type: 3}
   SFXClick: {fileID: 8300000, guid: 0e6d4d48fef8bd34f9a18cc6b7ed156c, type: 3}
+  musicaVolume: {fileID: 1494681791}
+  sfxVolume: {fileID: 1509445952}
 --- !u!1 &1022699497
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,7 +2758,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1492754316}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1016928962}
+        m_MethodName: BajarEfectos
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1022699500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2863,7 +2887,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 819827040}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1016928962}
+        m_MethodName: SubirMusica
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1034236013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3988,7 +4023,7 @@ RectTransform:
   m_LocalScale: {x: 0.25, y: 0.29910254, z: 0.29910257}
   m_Children: []
   m_Father: {fileID: 1804172900}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4145,7 +4180,7 @@ RectTransform:
   m_LocalScale: {x: 0.25, y: 0.29910254, z: 0.29910257}
   m_Children: []
   m_Father: {fileID: 1804172900}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5089,8 +5124,8 @@ RectTransform:
   - {fileID: 644585555}
   - {fileID: 1510686502}
   - {fileID: 1547838710}
-  - {fileID: 1509445951}
   - {fileID: 1494681790}
+  - {fileID: 1509445951}
   - {fileID: 1034236011}
   - {fileID: 2089895205}
   - {fileID: 239958207}
@@ -5793,7 +5828,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 345094893}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1016928962}
+        m_MethodName: BajarMusica
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2089895207
 MonoBehaviour:
   m_ObjectHideFlags: 0

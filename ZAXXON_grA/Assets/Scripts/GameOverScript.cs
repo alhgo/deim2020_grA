@@ -7,7 +7,6 @@ using TMPro;
 public class GameOverScript : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
-    Spaceship spaceship;
     float score;
     // Start is called before the first frame update
     void Start()

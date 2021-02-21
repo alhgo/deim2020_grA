@@ -3,76 +3,82 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.Video;
 using TMPro;
 
-public class Menu : MonoBehaviour
+public class InGame : MonoBehaviour
 {
-    [SerializeField] GameObject Inicial;
-    [SerializeField] GameObject Opciones;
-    [SerializeField] GameObject Creditos;
-    [SerializeField] GameObject primerBotonInicio;
-    [SerializeField] GameObject primerBotonOpciones;
-    [SerializeField] GameObject botonCreditos;
-    [SerializeField] Animator animator;
     [SerializeField] AudioSource MusicPlayer;
     [SerializeField] AudioSource SFXPlayer;
-    [SerializeField] AudioClip MusicaCreditos;
-    [SerializeField] AudioClip SFXMover;
-    [SerializeField] AudioClip SFXClick;
+    [SerializeField] VideoPlayer fondo;
+    [SerializeField] GameObject PauseMenu;
+    [SerializeField] GameObject pauseButton;
+    [SerializeField] GameObject Opciones;
+    [SerializeField] GameObject opcionesButton;
     [SerializeField] TextMeshProUGUI musicaVolume;
     [SerializeField] TextMeshProUGUI sfxVolume;
-
-    public void PlayGame()
+    static bool JuegoPausado;
+    // Start is called before the first frame update
+    void Start()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Juego");
+        float musicaVolumen = PlayerPrefs.GetFloat("musicaVolumen");
+        float sfxVolumen = PlayerPrefs.GetFloat("efectosVolumen");
+        MusicPlayer.volume = Mathf.Round(musicaVolumen);
+        SFXPlayer.volume = Mathf.Round(sfxVolumen);
+        sfxVolume.SetText(SFXPlayer.volume.ToString());
+        musicaVolume.SetText(MusicPlayer.volume.ToString());
     }
 
+    // Update is called once per frame
+    void Update()
+    {   if(Input.GetKeyDown(KeyCode.Escape) && PauseMenu.activeInHierarchy==false)
+        {
+            if(JuegoPausado)
+            {
+                Continuar();
+            }
+            else
+            {
+                Pausa();
+            }
+        }
+    }
+
+    public void Continuar()
+    {
+        PauseMenu.SetActive(false);
+        fondo.Play();
+        Time.timeScale = 1f;
+        JuegoPausado = false;
+    }
+    void Pausa()
+    {
+        PauseMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(pauseButton);
+        fondo.Pause();
+        Time.timeScale = 0f;
+        JuegoPausado = true;
+    }
     public void BackToMenu()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
-
     public void OptionsMenu()
     {
         if(Opciones.activeInHierarchy == false)
         {
             Opciones.SetActive(true);
-            Inicial.SetActive(false);
             EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(primerBotonOpciones);
+            EventSystem.current.SetSelectedGameObject(opcionesButton);
         }
         else
         {
             Opciones.SetActive(false);
-            Inicial.SetActive(true);
             EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(primerBotonInicio);
+            EventSystem.current.SetSelectedGameObject(pauseButton);
         }
     }
-
-    public void Credits()
-    {
-        if(Creditos.activeInHierarchy == false)
-        {
-            Creditos.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(botonCreditos);
-            MusicPlayer.Stop();
-            MusicPlayer.PlayOneShot(MusicaCreditos);
-            animator.SetTrigger("Creditos");
-        }
-        else
-        {
-            Creditos.SetActive(false);
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(primerBotonInicio);
-            MusicPlayer.Stop();
-            MusicPlayer.Play();
-        }            
-    }
-
     public void SubirMusica()
     {
         if(MusicPlayer.volume <1)
@@ -112,9 +118,5 @@ public class Menu : MonoBehaviour
             PlayerPrefs.SetFloat("efectosVolumen", SFXPlayer.volume);
             sfxVolume.SetText(volumen.ToString());
         }        
-    }
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }
