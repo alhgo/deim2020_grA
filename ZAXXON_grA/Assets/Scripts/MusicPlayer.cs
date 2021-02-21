@@ -9,9 +9,11 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField] AudioClip[] cancion;
     [SerializeField] TextMeshProUGUI musicaPlaying;    
     int n;
+    [SerializeField] Spaceship spaceship;
     // Start is called before the first frame update
     void Start()
     {   
+        spaceship = gameObject.GetComponent<Spaceship>();
         int n = Random.Range(0,cancion.Length);
         musicPlayer.PlayOneShot(cancion[n]);
         musicaPlaying.SetText(cancion[n].name);
@@ -20,7 +22,7 @@ public class MusicPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(musicPlayer.isPlaying == false)
+        if(musicPlayer.isPlaying == false && spaceship.vidas >=0)
         {
             int n = Random.Range(0,cancion.Length);
             musicPlayer.PlayOneShot(cancion[n]);

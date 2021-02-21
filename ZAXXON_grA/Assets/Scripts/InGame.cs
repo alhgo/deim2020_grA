@@ -15,6 +15,7 @@ public class InGame : MonoBehaviour
     [SerializeField] GameObject pauseButton;
     [SerializeField] GameObject Opciones;
     [SerializeField] GameObject opcionesButton;
+    [SerializeField] Animator transicion;
     [SerializeField] TextMeshProUGUI musicaVolume;
     [SerializeField] TextMeshProUGUI sfxVolume;
     static bool JuegoPausado;
@@ -23,15 +24,15 @@ public class InGame : MonoBehaviour
     {
         float musicaVolumen = PlayerPrefs.GetFloat("musicaVolumen");
         float sfxVolumen = PlayerPrefs.GetFloat("efectosVolumen");
-        MusicPlayer.volume = Mathf.Round(musicaVolumen);
-        SFXPlayer.volume = Mathf.Round(sfxVolumen);
-        sfxVolume.SetText(SFXPlayer.volume.ToString());
-        musicaVolume.SetText(MusicPlayer.volume.ToString());
+        MusicPlayer.volume = musicaVolumen;
+        SFXPlayer.volume = sfxVolumen;
+        sfxVolume.SetText(Mathf.Round(SFXPlayer.volume*10).ToString());
+        musicaVolume.SetText(Mathf.Round(MusicPlayer.volume*10).ToString());
     }
 
     // Update is called once per frame
     void Update()
-    {   if(Input.GetKeyDown(KeyCode.Escape) && PauseMenu.activeInHierarchy==false)
+    {   if(Input.GetButtonDown("Cancel") && PauseMenu.activeInHierarchy==false)
         {
             if(JuegoPausado)
             {
@@ -62,7 +63,8 @@ public class InGame : MonoBehaviour
     }
     public void BackToMenu()
     {
-        SceneManager.LoadScene("Menu");
+        Time.timeScale = 1f;
+        StartCoroutine("TransicionMenu");  
     }
     public void OptionsMenu()
     {
@@ -118,5 +120,12 @@ public class InGame : MonoBehaviour
             PlayerPrefs.SetFloat("efectosVolumen", SFXPlayer.volume);
             sfxVolume.SetText(volumen.ToString());
         }        
+    }
+    IEnumerator TransicionMenu()
+    {
+        transicion.SetTrigger("Transition");
+        Time.timeScale =1f;
+        yield return new WaitForSeconds(1.3f);
+        SceneManager.LoadScene("Menu");
     }
 }

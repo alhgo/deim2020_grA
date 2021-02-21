@@ -14,6 +14,7 @@ public class Menu : MonoBehaviour
     [SerializeField] GameObject primerBotonOpciones;
     [SerializeField] GameObject botonCreditos;
     [SerializeField] Animator animator;
+    [SerializeField] Animator transicion;
     [SerializeField] AudioSource MusicPlayer;
     [SerializeField] AudioSource SFXPlayer;
     [SerializeField] AudioClip MusicaCreditos;
@@ -25,13 +26,12 @@ public class Menu : MonoBehaviour
     public void PlayGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Juego");
+        StartCoroutine("Transicion");
     }
 
     public void BackToMenu()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu");
+    {        
+        StartCoroutine("TransicionMenu");        
     }
 
     public void OptionsMenu()
@@ -116,5 +116,18 @@ public class Menu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+    IEnumerator Transicion()
+    {
+        transicion.SetTrigger("Transition");
+        yield return new WaitForSeconds(1.3f);
+        SceneManager.LoadScene("Juego");
+    }
+    IEnumerator TransicionMenu()
+    {
+        transicion.SetTrigger("Transition");        
+        yield return new WaitForSeconds(1.3f);
+        Time.timeScale =1f;
+        SceneManager.LoadScene("Menu");
     }
 }

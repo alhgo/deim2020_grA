@@ -18,26 +18,33 @@ public class Spaceship : MonoBehaviour
     [SerializeField] GameObject escudoHUD;
     [SerializeField] GameObject energiaHUD;
     [SerializeField] GameObject menuPausa;
-    [SerializeField] AudioSource escudoSound;
+    [SerializeField] GameObject smoke1;
+    [SerializeField] GameObject smoke2;
+    [SerializeField] GameObject smoke3;
+    [SerializeField] AudioSource MusicPlayer;
+    [SerializeField] AudioSource SFXPlayer;
     [SerializeField] VideoPlayer fondo;
     [SerializeField] AudioClip escudoSFX;
+    [SerializeField] AudioClip choque;
+    [SerializeField] AudioClip muerte;
     [SerializeField] TextMeshProUGUI vidasText;
     [SerializeField] TextMeshProUGUI tiempoText;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI energiaText;
+    [SerializeField] Animator transicion;
     //private Enemigo enemigo;
     float tiempo;
     float minutos;
     public float segundos;
     float score;
-    int vidas;
+    public int vidas;
     public float guardarScore;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        speed = 12.5f;
+        speed = 9f;
         vidas = 3;
         tiempo = 0;
         minutos = 0;
@@ -100,6 +107,7 @@ public class Spaceship : MonoBehaviour
             }
             else if(vidas == 0)
             {
+                SFXPlayer.PlayOneShot(muerte);
                 PlayerPrefs.SetFloat("guardarScore", score);
                 StartCoroutine(Muerte());
             }
@@ -108,7 +116,8 @@ public class Spaceship : MonoBehaviour
     }
     IEnumerator Choque()
     {
-        naveCollider.enabled = false;
+        naveCollider.enabled = false;        
+        SFXPlayer.PlayOneShot(choque);
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(0.4f);
         for(int n = 3; n>0; n--)
@@ -117,7 +126,7 @@ public class Spaceship : MonoBehaviour
             escudoHUD.SetActive(false);
             yield return new WaitForSeconds(0.07f);
             escudoHUD.SetActive(true);
-            escudoSound.PlayOneShot(escudoSFX);
+            SFXPlayer.PlayOneShot(escudoSFX);
             yield return new WaitForSeconds(0.07f);
         }
         energiaHUD.SetActive(true);
@@ -126,6 +135,18 @@ public class Spaceship : MonoBehaviour
             energiaText.SetText("ENERGIA RESTANTE: "+ n + "%");
             yield return new WaitForSeconds(0.02f);
         }
+        if(vidas == 2)
+        {
+            smoke1.SetActive(true);
+        }
+        else if(vidas == 1)
+        {
+            smoke2.SetActive(true);
+        }
+        else if(vidas ==0)
+        {
+            smoke3.SetActive(true);
+        }
         yield return new WaitForSeconds(0.1f);
         energiaHUD.SetActive(false);
         for(int n = 3; n>0; n--)
@@ -133,18 +154,24 @@ public class Spaceship : MonoBehaviour
             escudoHUD.SetActive(true);
             yield return new WaitForSeconds(0.071f);
             escudoHUD.SetActive(false);
-            escudoSound.PlayOneShot(escudoSFX);
+            SFXPlayer.PlayOneShot(escudoSFX);
             yield return new WaitForSeconds(0.07f);
         }
         naveCollider.enabled = true;
     }
     IEnumerator Muerte()
     {
+        MusicPlayer.Stop();
         Time.timeScale = 0.3f;
         fondo.Pause();
         print("Has muerto");
         yield return new WaitForSeconds(0.3f);
+        StartCoroutine("Transicion");         
+    }
+    IEnumerator Transicion()
+    {
+        transicion.SetTrigger("Transition");
+        yield return new WaitForSeconds(0.9f);
         SceneManager.LoadScene("GameOver");
-        Time.timeScale = 0f;
     }
 }

@@ -7,19 +7,20 @@ using TMPro;
 public class GameOverScript : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
-    float score;
+    [SerializeField] AudioSource MusicPlayer;
+    [SerializeField] AudioSource SFXPlayer;
+    float score; 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale=1f;
         score = PlayerPrefs.GetFloat("guardarScore");
         //spaceship = gameObject.GetComponent<Spaceship>();
         print(score);
         scoreText.SetText("PUNTUACION:" + score); 
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {        
+        float musicaVolumen = PlayerPrefs.GetFloat("musicaVolumen");
+        float sfxVolumen = PlayerPrefs.GetFloat("efectosVolumen");
+        MusicPlayer.volume = musicaVolumen;
+        SFXPlayer.volume = sfxVolumen;        
     }
 }
