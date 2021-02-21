@@ -22,7 +22,7 @@ public class Columna : MonoBehaviour
     {
 
 
-        Nave = GameObject.Find("Spaceship");
+        Nave = GameObject.Find("Nave");
         sphere = Nave.GetComponent<Sphere>();
         //mySpeed = sphere.speed;
         mySpeed = 25f;

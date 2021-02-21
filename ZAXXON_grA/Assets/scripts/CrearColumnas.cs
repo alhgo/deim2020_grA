@@ -21,7 +21,7 @@ public class CrearColumnas : MonoBehaviour
 
 
         //Creo un método que generará las columnas iniciales
-        distObstacle = 12f;
+        distObstacle = 6f;
         CrearColumnasIniciales();
 
         //Iniciamos la corrutina que creará las instancias
@@ -41,12 +41,13 @@ public class CrearColumnas : MonoBehaviour
     void CrearColumnasIniciales()
     {
         //Bucle que genera 10 columnas iniciales
-        for (int n = 1; n <= 10; n++)
+        for (int n = 1; n <= 25; n++)
         {
             //Calculo un vector para desplazar en Z la distancia y en X un nº random
-            float randomX = Random.Range(0f, -30f);
-            newPos = new Vector3(randomX, 0, n * distObstacle);
-            Vector3 finalPos = RefPos.position - newPos;
+            float randomX = Random.Range(0f, 30f);
+             float randomY = Random.Range(0f, 8.5f);
+            newPos = new Vector3(randomX, randomY, n * distObstacle);
+            Vector3 finalPos = RefPos.position + newPos;
             //Instancio la columna
             Instantiate(MyColumn, finalPos, Quaternion.Euler(0,180,0));
         }
@@ -56,7 +57,8 @@ public class CrearColumnas : MonoBehaviour
     {
         //Creo un nuevo vector3 con una posición random en X
         float posRandom = Random.Range(0f, 30f);
-        Vector3 DestPos = new Vector3(posRandom, 0, 0);
+        float randomY = Random.Range(0f, 8.5f);
+        Vector3 DestPos = new Vector3(posRandom, randomY, 0);
         Vector3 NewPos = RefPos.position + DestPos;
         //Instancio el prefab en la posición del objeto de referencia
         //Como tenemos su componente Transform, le indicamos que lo que quiero es su posición
@@ -74,7 +76,7 @@ public class CrearColumnas : MonoBehaviour
             //Llamo al método que crea las columnas de forma aleatoria
             CrearColumna();
             //Indico a la corrutina que se repita cada segundo
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 }

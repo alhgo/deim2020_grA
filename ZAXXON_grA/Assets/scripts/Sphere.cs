@@ -8,7 +8,7 @@ public class Sphere : MonoBehaviour
     
     [SerializeField] GameObject humo;
    
-    public float speed = 2.5f;
+    public float speed = 4f;
     [SerializeField] GameObject[] vidasSprite;
     
     int vidas = 3;
