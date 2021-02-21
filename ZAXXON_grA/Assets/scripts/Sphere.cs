@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class Sphere : MonoBehaviour
 {
     
@@ -95,8 +96,9 @@ transform.rotation = Quaternion.Euler(desplY * -10, 0 , desplX * -20);
          }  
         else{
             
-            //Time.timeScale=0f;
-            print("GameOver");
+            Time.timeScale=0f;
+            SceneManager.LoadScene("GAMEOVER");
+            //print("GameOver");
         }
 
         }
