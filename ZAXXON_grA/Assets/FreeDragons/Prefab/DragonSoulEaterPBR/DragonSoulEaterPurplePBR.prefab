@@ -695,6 +695,7 @@ GameObject:
   - component: {fileID: 971994672}
   - component: {fileID: 971994671}
   - component: {fileID: 6866245874287162680}
+  - component: {fileID: -6158825643193535472}
   m_Layer: 0
   m_Name: DragonSoulEaterPurplePBR
   m_TagString: enemigo
@@ -750,6 +751,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.7152138, y: 3.8024702, z: 4.927346}
   m_Center: {x: 0.019032955, y: 2.0349946, z: 0.34648752}
+--- !u!114 &-6158825643193535472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971994670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619ef68f92fdb72459cd3526252c7012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Nave: {fileID: 0}
+  mySpeed: 0
 --- !u!1 &974828130
 GameObject:
   m_ObjectHideFlags: 0

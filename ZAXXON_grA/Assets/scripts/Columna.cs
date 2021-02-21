@@ -21,10 +21,11 @@ public class Columna : MonoBehaviour
     void Start()
     {
 
+
         Nave = GameObject.Find("Spaceship");
         sphere = Nave.GetComponent<Sphere>();
         //mySpeed = sphere.speed;
-        //mySpeed = 10f;
+        mySpeed = 25f;
         //print(mySpeed);
     }
 
@@ -36,7 +37,7 @@ public class Columna : MonoBehaviour
         //transform.position = FinalPos;
         //print(MyPos);
 
-        transform.Translate(Vector3.back * Time.deltaTime * mySpeed);
+        transform.Translate(Vector3.back * Time.deltaTime * -mySpeed);
 
         if(transform.position.z < -10)
         {

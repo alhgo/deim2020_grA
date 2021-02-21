@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class Sphere : MonoBehaviour
 {
-    public GameObject humo;
-    public GameObject Columna;
-    private Columna columna;
-    Vector3 pos;
+    
+    [SerializeField] GameObject humo;
+   
     public float speed = 2.5f;
     [SerializeField] GameObject[] vidasSprite;
     [SerializeField] Text speedText;
@@ -20,7 +19,7 @@ public class Sphere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        columna=Columna.GetComponent<Columna>();
+        
     }
 
     // Update is called once per frame
@@ -29,18 +28,10 @@ public class Sphere : MonoBehaviour
 
         MoverNave();
 
-        //Cambio el texto de la UI, metido en la variable speedText
-        //Debe ser una cadena, si quiero`puedo convertir el float en string
-        //speedText.text = speed.ToString();
-        speedText.text = "Velocidad: " + speed + " Kmts/h";
+        
+        
 
-        // Obtain the current time.
-        currentTime = Time.time.ToString("f2");
-        currentTime = "Time is: " + currentTime + " sec.";
-
-        timeText.text = currentTime;
-
-        pararDragones();
+        
     }
 
     void MoverNave()
@@ -89,14 +80,17 @@ transform.rotation = Quaternion.Euler(desplY * -10, 0 , desplX * -20);
     void OnTriggerEnter (Collider other){
 
         if(other.gameObject.tag=="enemigo"){
-            Instantiate(humo, pos, Quaternion.identity);
+           
 
          if(vidas>=1){
 
              vidas--;
              Destroy(vidasSprite[vidas]);
              print("vidas:"+vidas);
+             if(vidas==1){
+                 humo.SetActive(true);
              
+             }
          }  
         else{
             
@@ -108,16 +102,15 @@ transform.rotation = Quaternion.Euler(desplY * -10, 0 , desplX * -20);
 
 
    }
-   void pararDragones(){
-
-if(vidas<=0){
-columna.mySpeed = 0;
+   
 
 
-}
 
 
-   }
+
+
+
+   
  /* void Texto(){
         float tiempo += Time.deltaTime;
         float segundos = (int) tiempo % 60;

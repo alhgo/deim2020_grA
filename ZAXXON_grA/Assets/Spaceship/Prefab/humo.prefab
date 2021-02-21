@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6408293046116798320}
   - component: {fileID: 4021843868717958766}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: humo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
