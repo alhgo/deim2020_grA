@@ -278,8 +278,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -480,8 +480,7 @@ MonoBehaviour:
   - {fileID: 1601581413}
   - {fileID: 74403551}
   - {fileID: 436287492}
-  speedText: {fileID: 0}
-  timeText: {fileID: 0}
+  timeText: {fileID: 106698391}
 --- !u!54 &414692350
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1681,7 +1680,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -166, y: 26}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 90.436, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2007823816
 MonoBehaviour:

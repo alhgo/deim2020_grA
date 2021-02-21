@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class Sphere : MonoBehaviour
 {
     
@@ -10,11 +10,12 @@ public class Sphere : MonoBehaviour
    
     public float speed = 2.5f;
     [SerializeField] GameObject[] vidasSprite;
-    [SerializeField] Text speedText;
+    
     int vidas = 3;
-    [SerializeField] Text timeText;
+    [SerializeField] TextMeshProUGUI timeText;
 
     private string currentTime;
+    float tiempo=0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,7 @@ public class Sphere : MonoBehaviour
         MoverNave();
 
         
-        
+        Texto();
 
         
     }
@@ -111,12 +112,12 @@ transform.rotation = Quaternion.Euler(desplY * -10, 0 , desplX * -20);
 
 
    
- /* void Texto(){
-        float tiempo += Time.deltaTime;
+ void Texto(){
+        tiempo += Time.deltaTime;
         float segundos = (int) tiempo % 60;
         float minutos = (int) ((tiempo / 60) % 60);
-timeText.Text="TIEMPO JUGANDO: " + minutos.ToString("00") +":" + segundos.ToString("00");
+timeText.SetText("TIEMPO VIVO: " + minutos.ToString("00") +":" + segundos.ToString("00"));
 
-    }*/
+    }
 
 }
