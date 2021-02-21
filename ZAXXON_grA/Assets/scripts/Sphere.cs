@@ -15,23 +15,21 @@ public class Sphere : MonoBehaviour
     [SerializeField] AudioClip explosion;
     [SerializeField] AudioClip muerte;
 
+    [SerializeField] GameObject GameOver;
+
     // Start is called before the first frame update
     void Start()
     {
         life = vidas.Length;
     }
-
-
+    
     void Update()
     {
-        
         //llamar a destruir vidas
         DestruirVidas();
 
         //llamar a mover nave
         MoverNave();
-
-
     }
     
     //mov nave 
@@ -53,7 +51,7 @@ public class Sphere : MonoBehaviour
             transform.Translate(Vector3.up * Time.deltaTime * speed * desplY, Space.World);
         }
     
-        //rotacion nave al virar
+        //rotacion nave al virar, enseñado por cesar y adri.
         transform.rotation = Quaternion.Euler(0, 0, desplX * -20);
     }
 
@@ -61,21 +59,21 @@ public class Sphere : MonoBehaviour
     //colision de nave con planetas, resta de vidas por colision y sonido de colisiones y explosion.
     void OnTriggerEnter(Collider other)
     {
-            if(other.gameObject.tag == "enemy")
-            {
-                life--;
+        if(other.gameObject.tag == "enemy")
+        {
+            life--;
 
 
-                if(life < 3 && life > 0)
-                {  
-                    musica.PlayOneShot(golpe, 1f);
-                }
-                
-                else
-                {  
-                    musica.PlayOneShot(explosion, 1f);
-                }
+            if(life < 3 && life > 0)
+            {  
+                musica.PlayOneShot(golpe, 1f);
             }
+                
+            else
+            {  
+                musica.PlayOneShot(explosion, 1f);
+            }
+        }   
     }
 
     //Destruccion de los sprites y de la nave en funcion de la cantidad de vidas, llamada al canvas de gameover, parar musica y reproducir una nueva.
@@ -84,23 +82,25 @@ public class Sphere : MonoBehaviour
         if (life <= 0)
         {
             Destroy(vidas[0].gameObject);
-            GameOverManager.gameOverManager.CallGameOver ();
-            musica.Stop();
-            musica.PlayOneShot(muerte, 1f);
-            Destroy(gameObject);
+           StartCoroutine("Muerte");
         }
-
         else if (life < 2)
         {
             Destroy(vidas[1].gameObject);
         }
-
         else if (life < 3)
         {
             Destroy(vidas[2].gameObject);
         }
-        
     }
+    
+    IEnumerator Muerte()
+    {
+        yield return new WaitForSeconds(0.1f);
+         GameOver.SetActive(true);
+         musica.PlayOneShot(muerte, 1f);
+    }
+
 
  }
 

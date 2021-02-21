@@ -6,32 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
-    public GameObject GameOver;
+    
     public static GameOverManager gameOverManager;
     public Text pointsText;
 
-    Timer timer;
+    public GameObject InitGame;
+    private InitGame initGame;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        InitGame = GameObject.Find("InitGame");
+        initGame = InitGame.GetComponent<InitGame>();
         gameOverManager = this;
     }
 
     // Update is called once per frame
     void Update()
     {
+        pointsText.text = initGame.puntuacion.ToString("HighScore:" + "00");
     }
 
     //metodo para tener el canvas del gameover oculto (false) y que cuando en el script de la nave, se muera la nave, le llame y pase a verse (true).
     public void CallGameOver()
     {
-            GameOver.SetActive (true);
+            //GameOver.SetActive (true);
             Debug.Log ("GAMEOVER");
     }
 
     //funcion para que si pulso el boton PlayAgain se vuelva a poner la escena de la partida
-    public void RestarButton ()
+    public void RestarButton()
     {
         SceneManager.LoadScene("Game");
     }

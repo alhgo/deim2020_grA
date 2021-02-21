@@ -5,9 +5,8 @@ using UnityEngine;
 public class Musica : MonoBehaviour
 {
 
-    [SerializeField] AudioSource musicPlayer;
-    [SerializeField] AudioClip[] cancion;
-    [SerializeField] AudioClip[] golpes;
+    public AudioSource musicPlayer;
+    public AudioClip[] cancion;
 
     public Sphere sphere;
 
@@ -29,4 +28,5 @@ public class Musica : MonoBehaviour
             musicPlayer.PlayOneShot(cancion[n], 0.6f);
         }
     }
+
 }

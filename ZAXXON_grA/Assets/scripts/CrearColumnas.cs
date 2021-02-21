@@ -29,8 +29,6 @@ public class CrearColumnas : MonoBehaviour
         StartCoroutine("ColumnCorrutine");
 
         InicioColumnas();
-
-
     }
 
     void Update()
@@ -42,6 +40,7 @@ public class CrearColumnas : MonoBehaviour
        {
             for(int n = 0; ; n++)
             {
+            //Aumento de dificultad que me ha enseñado adrian a como hacerlo.
             aumentoDificultadYield = initGame.velNaves * 0.00153020234f;
             CrearColumna();
             print(aumentoDificultadYield);
@@ -50,7 +49,7 @@ public class CrearColumnas : MonoBehaviour
        }
 
 
-            void CrearColumna()
+        void CrearColumna()
             {
                 float posRandomx = Random.Range(0f, 30f);
                 float posRandomz = Random.Range(0f, 10f);
@@ -64,14 +63,14 @@ public class CrearColumnas : MonoBehaviour
         void InicioColumnas()
         {
             for (int n = 0; n < 30; n++)
-            {
-            float posRandomx = Random.Range(0f, 30f);
-            float posRandomz = Random.Range(0f, 30f);
-            float posRandomy = Random.Range(0f, 14f);
-            Vector3 NewPos = new Vector3(posRandomx, posRandomy, -n*distcolumna); 
-            Vector3 finalPos = InitPos.position + NewPos;
-            Instantiate(MyColumn, finalPos, Quaternion.identity);
-            }
+                {
+                float posRandomx = Random.Range(0f, 30f);
+                float posRandomz = Random.Range(0f, 30f);
+                float posRandomy = Random.Range(0f, 14f);
+                Vector3 NewPos = new Vector3(posRandomx, posRandomy, -n*distcolumna); 
+                Vector3 finalPos = InitPos.position + NewPos;
+                Instantiate(MyColumn, finalPos, Quaternion.identity);
+                }
         }
 
 

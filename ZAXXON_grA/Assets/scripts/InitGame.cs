@@ -12,6 +12,8 @@ public class InitGame : MonoBehaviour
     [SerializeField] Text textPunt;
     public bool paused = false;
 
+    public GameObject gameOver;
+
     public GameObject Columna;
     private Columna columna;
     
@@ -20,23 +22,19 @@ public class InitGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
-
-        print(puntuacion);
-
         StartCoroutine("Dificultad");
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        
             timeStart += Time.deltaTime;
             textBox.text = timeStart.ToString("F2");
+            //La linea de "activeInHierarchy" me la ha enseñado cesar.
+            if(paused == false && gameOver.activeInHierarchy == false)
+            {
             puntuacion = timeStart * 20;
+            }
             textPunt.text = puntuacion.ToString("00");
 
          //Parar el tiempo con el start.
@@ -48,10 +46,9 @@ public class InitGame : MonoBehaviour
                 Time.timeScale = 0;
             paused = !paused; 
             }
-        
     }
 
-            //dificultad incremental del juego (por corregir)
+            //dificultad incremental del juego.
         IEnumerator Dificultad()
         {
             while(true)
@@ -64,7 +61,7 @@ public class InitGame : MonoBehaviour
 
                     else if (puntuacion > 100 && puntuacion <= 300)
                     {
-                        velNaves = 50f;
+                        velNaves = 40f;
                         print("Tu velocidad es =" + velNaves);
                     }
 
@@ -93,10 +90,7 @@ public class InitGame : MonoBehaviour
                     }
                     
                     yield return new WaitForSeconds(0.1f);
-                } 
+                }
         }
-
-
-
 
 }
