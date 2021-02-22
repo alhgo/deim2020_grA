@@ -7,6 +7,7 @@ public class GameOver : MonoBehaviour
 {
 [SerializeField] GameObject primerBoton;
 void Start(){
+        Time.timeScale=1f;
         EventSystem.current.SetSelectedGameObject(primerBoton);
 
 }
