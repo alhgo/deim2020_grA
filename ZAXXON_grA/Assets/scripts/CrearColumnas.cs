@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class CrearColumnas : MonoBehaviour
 {
-    [SerializeField] GameObject[] Asteroides;
+    public GameObject[] Asteroides;
     [SerializeField] GameObject Empty;
+    [SerializeField] GameObject Nave;
     private Transform RefPos;
+    private Sphere mySpeed;
     [SerializeField] float distObstacle;
     Vector3 newPos;
-    
+    private float incremento;
+
 
     void Start()
     {
         distObstacle = 5f;
         ObstacColum();
         StartCoroutine("ColumnCorrutine");
+        StartCoroutine("BordesCorrutine");
+
+
+
     }
 
     // Update is called once per frame
@@ -31,23 +38,67 @@ public class CrearColumnas : MonoBehaviour
             Empty = GameObject.Find("CrearColumnas");
             int r = Random.Range(10, Asteroides.Length);
             RefPos = Empty.GetComponent<Transform>();
-            float randomX = Random.Range(-15f, 15f);
-            float randomY = Random.Range(-15f, 15f);
+            float randomX = Random.Range(-20f, 20f);
+            float randomY = Random.Range(-20f, 20f);
             newPos = new Vector3(randomX, randomY, n * distObstacle);
             Vector3 finalPos = RefPos.position - newPos;
             Instantiate(Asteroides[r], finalPos, Quaternion.identity);
+           
         }
     }
 
     void CrearColumna()
     {
         int r = Random.Range(0, Asteroides.Length);
-        float posRandom = Random.Range(-15f, 15f);
-        float randomY = Random.Range(-15f, 15f);
+        float posRandom = Random.Range(-20f, 20f);
+        float randomY = Random.Range(-20f, 20f);
         Vector3 DestPos = new Vector3(posRandom, randomY, 0);
         Vector3 NewPos = RefPos.position + DestPos;
         Instantiate(Asteroides[r], NewPos, Quaternion.identity);
     }
+
+    void CrearColumna2()
+    {
+        int r = Random.Range(0, Asteroides.Length);
+        float posRandom = Random.Range(-20f, 20f);
+        float randomY = Random.Range(-20f, 20f);
+        Vector3 DestPos = new Vector3(posRandom, randomY, 0);
+        Vector3 NewPos = RefPos.position + DestPos;
+        Instantiate(Asteroides[r], NewPos, Quaternion.identity);
+    }
+
+    void CrearColumna3()
+    {
+        int r = Random.Range(0, Asteroides.Length);
+        float posRandom = Random.Range(-20f, 20f);
+        float randomY = Random.Range(-20f, 20f);
+        Vector3 NewPos = RefPos.position + new Vector3(posRandom, randomY, 0);
+        Instantiate(Asteroides[r], NewPos, Quaternion.identity);
+    }
+
+    void ColumnasBordes()
+    {
+        int r = Random.Range(0, Asteroides.Length);
+        int s = Random.Range(0, 4);
+        float posRandom = Random.Range(-15f, 15f);
+        Vector3[] DestPos = new Vector3[] { new Vector3(posRandom, 20f , 0f), new Vector3(posRandom, -20f, 0f), new Vector3(20, posRandom, 0f), new Vector3(-20, posRandom, 0f) };
+        Vector3 NewPos = RefPos.position + DestPos[s];
+        Instantiate(Asteroides[r], NewPos, Quaternion.identity);
+
+
+
+    }
+    void Shuffle(int[] deck)
+    {
+        for (int i = 0; i < deck.Length; i++)
+        {
+            int temp = deck[i];
+            int randomIndex = Random.Range(0, deck.Length);
+            deck[i] = deck[randomIndex];
+            deck[randomIndex] = temp;
+        }
+    }
+
 
     //IMPORTANTE: el intevalo de creación ahora es fijo pero debería depender de la velocidad de la nave
     IEnumerator ColumnCorrutine()
@@ -55,7 +106,28 @@ public class CrearColumnas : MonoBehaviour
         for (int n = 0; ; n++)
         {
             CrearColumna();
-            yield return new WaitForSeconds(0.15f);
+            CrearColumna();
+            yield return new WaitForSeconds(incremento / 2);
+            CrearColumna();
+            CrearColumna();
+            mySpeed = Nave.GetComponent<Sphere>();
+            incremento = 5/mySpeed.speed;
+            if (mySpeed.speed > 13) { yield return new WaitForSeconds(incremento / 3); CrearColumna(); CrearColumna();}
+            yield return new WaitForSeconds(incremento);
+        }  
+    }
+
+    IEnumerator BordesCorrutine()
+    {
+        for (int n = 0; ; n++)
+        {
+            ColumnasBordes();
+            ColumnasBordes();
+            ColumnasBordes();
+            mySpeed = Nave.GetComponent<Sphere>();
+            incremento = 4 / mySpeed.speed;
+            if (mySpeed.speed > 13) { yield return new WaitForSeconds(incremento / 3); ColumnasBordes(); ColumnasBordes(); }
+            yield return new WaitForSeconds(incremento);
         }
     }
 }

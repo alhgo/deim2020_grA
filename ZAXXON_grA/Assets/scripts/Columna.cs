@@ -9,7 +9,9 @@ public class Columna : MonoBehaviour
     private Vector3 MyPos;
     [SerializeField] GameObject Nave;
     [SerializeField] float mySpeed;
-    
+    [SerializeField] GameObject Empty;
+    private CrearColumnas Meteoritos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class Columna : MonoBehaviour
     {
         Nave = GameObject.Find("Capsule");
         sphere = Nave.GetComponent<Sphere>();
-        mySpeed = sphere.speed;
+        Velocidadmeteoritos();
         
         Vector3 Movimiento = new Vector3(0, 0, -mySpeed);
 
@@ -32,4 +34,18 @@ public class Columna : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-}
+
+    void Velocidadmeteoritos()
+    {
+        Nave = GameObject.Find("Capsule");
+        sphere = Nave.GetComponent<Sphere>();
+        Empty = GameObject.Find("CrearColumnas");
+        Meteoritos = Empty.GetComponent<CrearColumnas>();
+        int r = Random.Range(0, Meteoritos.Asteroides.Length);
+        int rank = Meteoritos.Asteroides.Rank;
+        if (rank < 7) { mySpeed = sphere.speed * 1.3f;}
+        else if (rank < 7 || rank > 0) { mySpeed = sphere.speed * 1f; }
+        else { mySpeed = sphere.speed * 0.6f; }
+    }
+    }
+

@@ -7,7 +7,7 @@ public class LookCamara : MonoBehaviour
     public GameObject Personaje;
     private Transform playerPosition;
     //Variables necesarias para la opción de suavizado
-    [SerializeField] float smoothVelocity = 0.3F;
+    [SerializeField] float smoothVelocity = 0.1f;
     [SerializeField] Vector3 camaraVelocity = Vector3.zero;
 
     // Start is called before the first frame update

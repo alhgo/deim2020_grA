@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2329534}
   - component: {fileID: 3420697605075099753}
   - component: {fileID: -3897852073159557037}
+  - component: {fileID: 5967516696224294821}
   m_Layer: 0
   m_Name: Rock 5
   m_TagString: Untagged
@@ -92,7 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ef68f92fdb72459cd3526252c7012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Nave: {fileID: 0}
   mySpeed: 10
+  Empty: {fileID: 0}
 --- !u!54 &-3897852073159557037
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -109,3 +112,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &5967516696224294821
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.8825524
+  m_Center: {x: 0.039830267, y: -0.015729368, z: 0.21197301}

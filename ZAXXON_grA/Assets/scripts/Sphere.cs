@@ -1,21 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Sphere : MonoBehaviour
 {
-    public float speed = 5f;
-
+    public float speed = 8f;
+    [SerializeField] GameObject Nave;
+    [SerializeField] Renderer Navemesh;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine("AumentoVelocidad");
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         MoverNave();
+        if (speed == 18f) { StopCoroutine("AumentoVelocidad"); };
+
     }
 
     void MoverNave()
@@ -33,5 +39,24 @@ public class Sphere : MonoBehaviour
             transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
         }
       }
+
+    IEnumerator AumentoVelocidad()
+    {
+        for (int n = 0; ; n++)
+        {
+            yield return new WaitForSeconds(5f);
+            speed = speed + 1;
+
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        
+        Nave.GetComponent<Renderer>();
+        Navemesh.enabled = false;
+    }
+
+
 
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2306886}
   - component: {fileID: 7331039645957298417}
   - component: {fileID: -408774644164025541}
+  - component: {fileID: -437728606687005886}
   m_Layer: 0
   m_Name: Rock 11
   m_TagString: Untagged
@@ -92,7 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ef68f92fdb72459cd3526252c7012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Nave: {fileID: 0}
   mySpeed: 7
+  Empty: {fileID: 0}
 --- !u!54 &-408774644164025541
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -109,3 +112,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &-437728606687005886
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.4929752
+  m_Center: {x: -0.12723553, y: -0.028271794, z: -0.054984927}

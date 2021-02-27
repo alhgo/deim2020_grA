@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2386968}
   - component: {fileID: -1641440672338911256}
   - component: {fileID: 4651168616458127301}
+  - component: {fileID: -569039674819599954}
   m_Layer: 0
   m_Name: Rock 3
   m_TagString: Untagged
@@ -92,7 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ef68f92fdb72459cd3526252c7012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Nave: {fileID: 0}
   mySpeed: 10
+  Empty: {fileID: 0}
 --- !u!54 &4651168616458127301
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -109,3 +112,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &-569039674819599954
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.4685946
+  m_Center: {x: 0.117064655, y: -0.0878275, z: -0.053985596}
