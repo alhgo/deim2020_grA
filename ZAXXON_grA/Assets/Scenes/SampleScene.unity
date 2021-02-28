@@ -890,6 +890,7 @@ MonoBehaviour:
   - {fileID: 153058, guid: 0f5a1a462eaffb249a819206c43e7827, type: 3}
   Empty: {fileID: 1667685384}
   Nave: {fileID: 1860193538}
+  mySpeed: 0
   distObstacle: 4
 --- !u!4 &1667685386
 Transform:
@@ -956,7 +957,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   Nave: {fileID: 1203045171}
+  Canvasscript: {fileID: 1667685384}
+  Empty: {fileID: 0}
   Navemesh: {fileID: 1203045173}
+  tiempodejuego: 0
+  crearmeteoritos: 1
 --- !u!136 &1860193540
 CapsuleCollider:
   m_ObjectHideFlags: 0

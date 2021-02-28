@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,8 @@ public class CrearColumnas : MonoBehaviour
     [SerializeField] GameObject Empty;
     [SerializeField] GameObject Nave;
     private Transform RefPos;
-    private Sphere mySpeed;
+    private Sphere mySpeed2;
+    public float mySpeed;
     [SerializeField] float distObstacle;
     Vector3 newPos;
     private float incremento;
@@ -20,15 +21,17 @@ public class CrearColumnas : MonoBehaviour
         ObstacColum();
         StartCoroutine("ColumnCorrutine");
         StartCoroutine("BordesCorrutine");
-
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        mySpeed2 = Nave.GetComponent<Sphere>();
 
+        if (mySpeed2.crearmeteoritos == false) {
+            StopCoroutine("ColumnCorrutine");
+            StopCoroutine("BordesCorrutine");
+        }
     }
 
     void ObstacColum()
@@ -57,24 +60,6 @@ public class CrearColumnas : MonoBehaviour
         Instantiate(Asteroides[r], NewPos, Quaternion.identity);
     }
 
-    void CrearColumna2()
-    {
-        int r = Random.Range(0, Asteroides.Length);
-        float posRandom = Random.Range(-20f, 20f);
-        float randomY = Random.Range(-20f, 20f);
-        Vector3 DestPos = new Vector3(posRandom, randomY, 0);
-        Vector3 NewPos = RefPos.position + DestPos;
-        Instantiate(Asteroides[r], NewPos, Quaternion.identity);
-    }
-
-    void CrearColumna3()
-    {
-        int r = Random.Range(0, Asteroides.Length);
-        float posRandom = Random.Range(-20f, 20f);
-        float randomY = Random.Range(-20f, 20f);
-        Vector3 NewPos = RefPos.position + new Vector3(posRandom, randomY, 0);
-        Instantiate(Asteroides[r], NewPos, Quaternion.identity);
-    }
 
     void ColumnasBordes()
     {
@@ -84,23 +69,11 @@ public class CrearColumnas : MonoBehaviour
         Vector3[] DestPos = new Vector3[] { new Vector3(posRandom, 20f , 0f), new Vector3(posRandom, -20f, 0f), new Vector3(20, posRandom, 0f), new Vector3(-20, posRandom, 0f) };
         Vector3 NewPos = RefPos.position + DestPos[s];
         Instantiate(Asteroides[r], NewPos, Quaternion.identity);
-
-
-
-    }
-    void Shuffle(int[] deck)
-    {
-        for (int i = 0; i < deck.Length; i++)
-        {
-            int temp = deck[i];
-            int randomIndex = Random.Range(0, deck.Length);
-            deck[i] = deck[randomIndex];
-            deck[randomIndex] = temp;
-        }
     }
 
 
-    //IMPORTANTE: el intevalo de creación ahora es fijo pero debería depender de la velocidad de la nave
+    
+
     IEnumerator ColumnCorrutine()
     {
         for (int n = 0; ; n++)
@@ -110,9 +83,9 @@ public class CrearColumnas : MonoBehaviour
             yield return new WaitForSeconds(incremento / 2);
             CrearColumna();
             CrearColumna();
-            mySpeed = Nave.GetComponent<Sphere>();
-            incremento = 5/mySpeed.speed;
-            if (mySpeed.speed > 13) { yield return new WaitForSeconds(incremento / 3); CrearColumna(); CrearColumna();}
+            mySpeed2 = Nave.GetComponent<Sphere>();
+            incremento = 5/mySpeed2.speed;
+            if (mySpeed2.speed > 13) { yield return new WaitForSeconds(incremento / 3); CrearColumna(); CrearColumna();}
             yield return new WaitForSeconds(incremento);
         }  
     }
@@ -124,9 +97,9 @@ public class CrearColumnas : MonoBehaviour
             ColumnasBordes();
             ColumnasBordes();
             ColumnasBordes();
-            mySpeed = Nave.GetComponent<Sphere>();
-            incremento = 4 / mySpeed.speed;
-            if (mySpeed.speed > 13) { yield return new WaitForSeconds(incremento / 3); ColumnasBordes(); ColumnasBordes(); }
+            mySpeed2 = Nave.GetComponent<Sphere>();
+            incremento = 4 / mySpeed2.speed;
+            if (mySpeed2.speed > 13) { yield return new WaitForSeconds(incremento / 3); ColumnasBordes(); ColumnasBordes(); }
             yield return new WaitForSeconds(incremento);
         }
     }

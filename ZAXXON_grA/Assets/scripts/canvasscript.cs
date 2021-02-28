@@ -11,12 +11,13 @@ public class canvasscript : MonoBehaviour
     private Text Text;
     [SerializeField] GameObject Nave;
     private Sphere sphere;
+    private float timePass;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -27,17 +28,16 @@ public class canvasscript : MonoBehaviour
 
    void TextosdelUI()
     {
-
         sphere = Nave.GetComponent<Sphere>();
-        double timePass = Time.time;
-        double lejitos = timePass * sphere.speed;
+        double lejitos = sphere.tiempodejuego * sphere.speed;
 
         string coorDistance = lejitos.ToString("f3");
         string coorSpeed = sphere.speed.ToString("f0");
-        string total = timePass.ToString("f5");
+        string total = sphere.tiempodejuego.ToString("f2");
 
         timeText.text = "Time: " + total;
         distancia.text = "Distance: " + coorDistance;
         velocidad.text = "Speed: " + coorSpeed;
     }
+
 }

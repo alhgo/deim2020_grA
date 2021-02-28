@@ -7,21 +7,28 @@ public class Sphere : MonoBehaviour
 {
     public float speed = 8f;
     [SerializeField] GameObject Nave;
+    [SerializeField] GameObject Canvasscript;
+    [SerializeField] GameObject Empty;
+    private CrearColumnas crearcolumnas;
+    private canvasscript CanvasscriptV;
     [SerializeField] Renderer Navemesh;
+    public float tiempodejuego;
+    public bool crearmeteoritos = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        tiempodejuego = 0.00f;
         StartCoroutine("AumentoVelocidad");
+        StartCoroutine("Tiempojuego");
        
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoverNave();
+		MoverNave();		
         if (speed == 18f) { StopCoroutine("AumentoVelocidad"); };
-
     }
 
     void MoverNave()
@@ -52,11 +59,28 @@ public class Sphere : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        
+        crearmeteoritos = false;
+        CanvasscriptV = Canvasscript.GetComponent<canvasscript>();
         Nave.GetComponent<Renderer>();
         Navemesh.enabled = false;
+		StopCoroutine("AumentoVelocidad");
+        StopCoroutine("Tiempojuego");
+        PauseGame();
+
     }
 
+    IEnumerator Tiempojuego()
+    {
+        for (int n = 0; ; n++)
+        {
+            tiempodejuego = tiempodejuego + 0.01f;
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
 
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
 
 }
