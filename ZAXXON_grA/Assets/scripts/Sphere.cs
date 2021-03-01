@@ -22,7 +22,6 @@ public class Sphere : MonoBehaviour
         //Llamo a la corrutina velocidad
         StartCoroutine("Velocidad");
         StartCoroutine("Distancia");
-
         //Ocultar panel Restart
         panelRestart.SetActive(false);
         

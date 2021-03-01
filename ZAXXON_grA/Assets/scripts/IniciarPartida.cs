@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class IniciarPartida : MonoBehaviour
 {
+    
     public void EmpezarJuego()
     {
-        SceneManager.LoadScene("SampleScene"); 
-    }
+        SceneManager.LoadScene("SampleScene");
+   }
     public void HighScores()
     {
         SceneManager.LoadScene("HighScores");
