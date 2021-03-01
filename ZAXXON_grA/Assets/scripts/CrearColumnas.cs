@@ -12,6 +12,7 @@ public class CrearColumnas : MonoBehaviour
     private Vector3 initPos, savedPos;
     private Vector3 nPos = new Vector3(0f, 0f, -10f);
 
+    public float ColumnQuantity;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +63,7 @@ public class CrearColumnas : MonoBehaviour
             //Intancio el prefab en coordenadas 0,0,0
             //Instantiate(MyColumn);
             CrearColumna();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1*(1/ColumnQuantity));
         }
     }
 }
