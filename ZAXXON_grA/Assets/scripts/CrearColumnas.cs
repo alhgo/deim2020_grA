@@ -69,6 +69,8 @@ public class CrearColumnas : MonoBehaviour
             //Instantiate(MyColumn);
             CrearColumna();
 
+            /*Dependiendo de la velocidad de la nave se crearán las columnas en mayor o menor cantidad, para mantener la dificultad e ir incrementándola*/
+
             if (sphere.speed == 0)
             {
                 ColumnQuantity = 0f;
@@ -81,22 +83,22 @@ public class CrearColumnas : MonoBehaviour
             }
             else if (sphere.speed <= 10)
             {
-                ColumnQuantity = 2f;
+                ColumnQuantity = 3f;
 
             }
             else if (sphere.speed <= 25)
             {
-                ColumnQuantity = 3f;
+                ColumnQuantity = 4f;
 
             }
             else if (sphere.speed <= 50)
             {
-                ColumnQuantity = 4f;
+                ColumnQuantity = 6f;
 
             }
             else if (sphere.speed <= 100)
             {
-                ColumnQuantity = 5f;
+                ColumnQuantity = 8f;
 
             }
             else
