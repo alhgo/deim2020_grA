@@ -47,8 +47,8 @@ public class CrearColumnas : MonoBehaviour
         distObstacle = 10f;
         for (int n = 1; n <= 17; n++)
         {
-            float randomY = Random.Range(5.75f, 1.25f);
-            float randomZ = Random.Range(-9.5f, 9.5f);
+            float randomY = Random.Range(4.75f, 1f);
+            float randomZ = Random.Range(-3.5f, 3.5f);
             Vector3 newPos = new Vector3(-randomZ, randomY, n * distObstacle);
             Vector3 finalPos = newPos + new Vector3(0,0,10);
             Instantiate(MyColumn, finalPos, Quaternion.identity);
@@ -59,8 +59,8 @@ public class CrearColumnas : MonoBehaviour
     {
         //Creo un nuevo vector3
         
-        float posRandomY = Random.Range(5.75f, 1.25f);
-        float posRandom = Random.Range(-9.5f, 9.5f);
+        float posRandomY = Random.Range(4.75f, 1f);
+        float posRandom = Random.Range(-3.5f, 3.5f);
         Vector3 DestPos = new Vector3(posRandom, posRandomY, 0);
         Vector3 NewPos = RefPos.position + DestPos;
         //Instancio el prefab en la posición del objeto de referencia
