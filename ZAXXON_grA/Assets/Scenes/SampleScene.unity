@@ -857,6 +857,7 @@ MonoBehaviour:
   MyColumn: {fileID: 2388127070130277655, guid: c78899a646417e84099aebc205842f83,
     type: 3}
   RefPos: {fileID: 1667685386}
+  SphereObject: {fileID: 739006502}
   ColumnQuantity: 1
 --- !u!4 &1667685386
 Transform:

@@ -9,6 +9,9 @@ public class CrearColumnas : MonoBehaviour
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
 
+    [SerializeField] GameObject SphereObject;
+    private Sphere sphere;
+
     private Vector3 initPos, savedPos;
     private Vector3 nPos = new Vector3(0f, 0f, -10f);
 
@@ -29,6 +32,8 @@ public class CrearColumnas : MonoBehaviour
         }
 
         transform.position = savedPos;
+
+        sphere = SphereObject.GetComponent<Sphere>();
 
         StartCoroutine("ColumnCorrutine");
     }
@@ -63,6 +68,38 @@ public class CrearColumnas : MonoBehaviour
             //Intancio el prefab en coordenadas 0,0,0
             //Instantiate(MyColumn);
             CrearColumna();
+
+            if (sphere.speed <= 5)
+            {
+                ColumnQuantity = 1f;
+
+            }
+            else if (sphere.speed <= 10)
+            {
+                ColumnQuantity = 2f;
+
+            }
+            else if (sphere.speed <= 25)
+            {
+                ColumnQuantity = 3f;
+
+            }
+            else if (sphere.speed <= 50)
+            {
+                ColumnQuantity = 4f;
+
+            }
+            else if (sphere.speed <= 100)
+            {
+                ColumnQuantity = 5f;
+
+            }
+            else
+            {
+                ColumnQuantity = 10f;
+
+            }
+
             yield return new WaitForSeconds(1*(1/ColumnQuantity));
         }
     }
