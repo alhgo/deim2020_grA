@@ -32,11 +32,6 @@ public class CrearColumnas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
-        {
-            CrearColumna();
-
-        }
         if (sphereMove.speed != 0f) 
         {
             speed = sphereMove.speed;
@@ -52,17 +47,21 @@ public class CrearColumnas : MonoBehaviour
         distObstacle = 10f;
         for (int n = 1; n <= 17; n++)
         {
-            float randomZ = Random.Range(0f, 30f);
-            newPos = new Vector3(-randomZ, 0, n * distObstacle);
-            Vector3 finalPos = RefPos.position - newPos;
+            float randomY = Random.Range(5.75f, 1.25f);
+            float randomZ = Random.Range(-9.5f, 9.5f);
+            Vector3 newPos = new Vector3(-randomZ, randomY, n * distObstacle);
+            Vector3 finalPos = newPos + new Vector3(0,0,10);
             Instantiate(MyColumn, finalPos, Quaternion.identity);
         }
+        
     }
     void CrearColumna()
     {
         //Creo un nuevo vector3
-        float posRandom = Random.Range(0f, 30f);
-        Vector3 DestPos = new Vector3(posRandom, 0, 0);
+        
+        float posRandomY = Random.Range(5.75f, 1.25f);
+        float posRandom = Random.Range(-9.5f, 9.5f);
+        Vector3 DestPos = new Vector3(posRandom, posRandomY, 0);
         Vector3 NewPos = RefPos.position + DestPos;
         //Instancio el prefab en la posición del objeto de referencia
         //Como tenemos su componente Transform, le indicamos que lo que quiero es su posición
@@ -75,8 +74,6 @@ public class CrearColumnas : MonoBehaviour
         for (int n=0; ; n++ )
         {
             print(n);
-            //Intancio el prefab en coordenadas 0,0,0
-            //Instantiate(MyColumn);
             CrearColumna();
             //Relación entre la velocidad de la nave y el tiempo para instanciar columnas
             temporizador = 1f - (speed * 0.04f);

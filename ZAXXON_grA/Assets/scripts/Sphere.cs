@@ -61,20 +61,20 @@ public class Sphere : MonoBehaviour
         float desplY = Input.GetAxis("Vertical");
         float desplX = Input.GetAxis("Horizontal");
         //Restringir mov horizontal
-        if(PosX >0 && PosX<30)
+        if(PosX >-5 && PosX<5)
         {
             transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
         }
-       else if(PosX<0 && desplX>0)
+       else if(PosX< -5 && desplX>0)
         {
             transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
         }
-        else if (PosX > 30 && desplX < 0)
+        else if (PosX > 5 && desplX < 0)
         {
             transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
         }
         //Restringir mov vertical
-        if (PosY > 1 && PosY < 9)
+        if (PosY > 1 && PosY < 5)
         {
             transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
         }
@@ -82,7 +82,7 @@ public class Sphere : MonoBehaviour
         {
             transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
         }
-        else if (PosY > 9 && desplY < 1)
+        else if (PosY > 5 && desplY < 0)
         {
             transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
         }
