@@ -9,8 +9,12 @@ public class Distance : MonoBehaviour
     public Text distanciaText;
     public float distancia = 0.0f;
 
+    [SerializeField] GameObject SphereObject;
+    private Sphere sphere;
+
     public void Start()
     {
+        sphere = SphereObject.GetComponent<Sphere>();
         StartCoroutine("DistanceCorrutine");
     }
     void CheckDistance() 
@@ -28,7 +32,7 @@ public class Distance : MonoBehaviour
         for (n = 0; ; n++)
         {
             CheckDistance();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1*(1/sphere.speed));
         }
 
     }

@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   SpeedText: {fileID: 929009120}
+  DistanceObject: {fileID: 2090035459}
 --- !u!135 &739006504
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -989,6 +990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanciaText: {fileID: 2090035462}
   distancia: 0
+  SphereObject: {fileID: 739006502}
 --- !u!114 &2090035462
 MonoBehaviour:
   m_ObjectHideFlags: 0
