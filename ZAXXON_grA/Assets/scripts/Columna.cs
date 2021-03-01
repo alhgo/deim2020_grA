@@ -20,16 +20,11 @@ public class Columna : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Nave = GameObject.Find("Capsule");
         Empty = GameObject.Find("CrearColumnas");
         Meteoritos = Empty.GetComponent<CrearColumnas>();
-        sphere = Nave.GetComponent<Sphere>();
         Velocidadmeteoritos();
-        
         Vector3 Movimiento = new Vector3(0, 0, -Meteoritos.mySpeed);
-
         transform.Translate(Movimiento * Time.deltaTime * Meteoritos.mySpeed);
-
         if (transform.position.z < -25)
         {
             Destroy(this.gameObject);
@@ -42,7 +37,6 @@ public class Columna : MonoBehaviour
         sphere = Nave.GetComponent<Sphere>();
         Empty = GameObject.Find("CrearColumnas");
         Meteoritos = Empty.GetComponent<CrearColumnas>();
-        int r = Random.Range(0, Meteoritos.Asteroides.Length);
         int rank = Meteoritos.Asteroides.Rank;
         if (rank < 7) { Meteoritos.mySpeed = sphere.speed * 1.3f;}
         else if (rank < 7 || rank > 0) { Meteoritos.mySpeed = sphere.speed * 1f; }
