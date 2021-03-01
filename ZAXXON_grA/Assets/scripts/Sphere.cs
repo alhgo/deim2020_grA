@@ -7,6 +7,7 @@ public class Sphere : MonoBehaviour
 {
     public float speed = 10f;
     float speedMov = 10f;
+    float speedSimulated;
 
     [SerializeField] Text SpeedText;
 
@@ -60,8 +61,7 @@ public class Sphere : MonoBehaviour
     }
     void CheckSpeed()
     {
-        float speedSimulated;
-
+    
         if(distance.distancia <= 15)
         {
             speed = 1f;
@@ -99,11 +99,23 @@ public class Sphere : MonoBehaviour
 
     IEnumerator SpeedCorrutine()
     {
+       
         int n;
         for (n = 0; ; n++)
         {
-            CheckSpeed();
-            yield return new WaitForSeconds(1);
+            if(distance.crash == false)
+            {
+                CheckSpeed();
+                yield return new WaitForSeconds(1);
+            }
+            else
+            {
+                speed = 0f;
+                speedSimulated  = 0f;
+                speedMov = 0f;
+                SpeedText.text = "Velocidad: " + speedSimulated + "km/h";
+                yield return null;
+            }
         }
 
     }

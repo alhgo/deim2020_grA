@@ -35,7 +35,12 @@ public class Columna : MonoBehaviour
         //transform.position = FinalPos;
         //print(MyPos);
 
-        if (sphere.speed <= 5)
+        if (sphere.speed == 0)
+        {
+            mySpeed = 0f;
+
+        }
+        else if (sphere.speed <= 5)
         {
             mySpeed = 10f;
            

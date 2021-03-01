@@ -352,7 +352,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.53647804
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &739006505
 MeshRenderer:
@@ -427,6 +427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMesh: {fileID: 739006505}
+  SphereObject: {fileID: 739006502}
+  DistanceObject: {fileID: 2090035459}
 --- !u!54 &739006509
 Rigidbody:
   m_ObjectHideFlags: 0

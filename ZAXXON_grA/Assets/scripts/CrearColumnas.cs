@@ -69,7 +69,12 @@ public class CrearColumnas : MonoBehaviour
             //Instantiate(MyColumn);
             CrearColumna();
 
-            if (sphere.speed <= 5)
+            if (sphere.speed == 0)
+            {
+                ColumnQuantity = 0f;
+
+            }
+            else if (sphere.speed <= 5)
             {
                 ColumnQuantity = 1f;
 
