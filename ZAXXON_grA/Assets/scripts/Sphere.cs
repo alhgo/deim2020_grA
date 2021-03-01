@@ -62,7 +62,7 @@ public class Sphere : MonoBehaviour
     {
         float speedSimulated;
 
-        if(distance.distancia <= 25)
+        if(distance.distancia <= 15)
         {
             speed = 1f;
             speedSimulated = 10f;
@@ -84,7 +84,7 @@ public class Sphere : MonoBehaviour
         }
         else if (distance.distancia <= 2500)
         {
-            speed = 500f;
+            speed = 50f;
             speedSimulated = 500f;
         }
         else
