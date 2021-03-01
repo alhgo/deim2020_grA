@@ -9,7 +9,7 @@ public class GameOverScript : MonoBehaviour
     public GameObject GOCanvas;
     [SerializeField] Text distancia;
     [SerializeField] GameObject Nave;
-    [SerializeField] Sphere sphere;
+    private Sphere sphere;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,10 +33,14 @@ public class GameOverScript : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    void TextoGameOver(){
+    public void TextoGameOver()
+    {
         sphere = Nave.GetComponent<Sphere>();
+
         double lejitos = sphere.tiempodejuego * sphere.speed;
-        string coorDistance = lejitos.ToString("f3");
+        string coorDistance = lejitos.ToString("f2");
+
         distancia.text = "Distance: " + coorDistance;
+
     }
 }

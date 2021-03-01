@@ -8,10 +8,8 @@ public class canvasscript : MonoBehaviour
     public Text timeText;
     public Text distancia;
     public Text velocidad;
-    private Text Text;
     [SerializeField] GameObject Nave;
     private Sphere sphere;
-    private float timePass;
 
 
     // Start is called before the first frame update

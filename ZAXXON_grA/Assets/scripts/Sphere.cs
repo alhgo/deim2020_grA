@@ -9,9 +9,11 @@ public class Sphere : MonoBehaviour
     [SerializeField] GameObject Nave;
     [SerializeField] GameObject Canvasscript;
     [SerializeField] Renderer Navemesh;
+    [SerializeField] GameObject Explosion;
     public float tiempodejuego;
     public bool crearmeteoritos = true;
     public GameObject GOCanvas;
+    public GameObject Llamitas;
 
     // Start is called before the first frame update
     void Start()
@@ -57,15 +59,32 @@ public class Sphere : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        crearmeteoritos = false;
-        Nave.GetComponent<Renderer>();
-        Navemesh.enabled = false;
-		StopCoroutine("AumentoVelocidad");
-        StopCoroutine("Tiempojuego");
-        GOCanvas.SetActive(true);
-        Time.timeScale = 0f;
+        StartCoroutine("Expljuego");
+    }
 
-
+    IEnumerator Expljuego()
+    {
+        for (int n = 0; n <= 3 ; n++)
+        {
+            if (n == 0) { 
+                Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                crearmeteoritos = false;
+                Llamitas.SetActive(false);
+                Nave.GetComponent<Renderer>();
+                Navemesh.enabled = false;
+            }
+            else if (n < 3) 
+            { 
+                StopCoroutine("AumentoVelocidad");
+                StopCoroutine("Tiempojuego");
+            }
+            else
+            {
+                GOCanvas.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     IEnumerator Tiempojuego()
