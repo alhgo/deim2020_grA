@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NaveCollider : MonoBehaviour
 {
@@ -27,8 +28,11 @@ public class NaveCollider : MonoBehaviour
         if (collision.gameObject.tag == "Obstacle")
         {
             print("Se ha chocado con un obstáculo");
-            myMesh.enabled = false;
             distance.crash = true;
+            myMesh.enabled = false;
+   
+            SceneManager.LoadScene(3);
+
 
         }
     }
