@@ -40,34 +40,39 @@ public class Columna : MonoBehaviour
             mySpeed = 0f;
 
         }
-        else if (sphere.speed <= 5)
+        else if (sphere.speed <= 1)
         {
             mySpeed = 10f;
+
+        }
+        else if (sphere.speed <= 5)
+        {
+            mySpeed = 15f;
            
         }
         else if (sphere.speed <= 10)
         {
-            mySpeed = 15f;
+            mySpeed = 20f;
           
         }
         else if (sphere.speed <= 25)
         {
-            mySpeed = 20f;
+            mySpeed = 25f;
             
         }
         else if (sphere.speed <= 50)
         {
-            mySpeed = 25f;
+            mySpeed = 30f;
          
         }
         else if (sphere.speed <= 100)
         {
-            mySpeed = 30f;
+            mySpeed = 35f;
        
         }
         else
         {
-            mySpeed = 50f;
+            mySpeed = 40f;
    
         }
 

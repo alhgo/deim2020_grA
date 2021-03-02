@@ -78,32 +78,32 @@ public class CrearColumnas : MonoBehaviour
             }
             else if (sphere.speed <= 5)
             {
-                ColumnQuantity = 1f;
+                ColumnQuantity = 1.5f;
 
             }
             else if (sphere.speed <= 10)
             {
-                ColumnQuantity = 3f;
+                ColumnQuantity = 2f;
 
             }
             else if (sphere.speed <= 25)
             {
-                ColumnQuantity = 4f;
+                ColumnQuantity = 2.5f;
 
             }
             else if (sphere.speed <= 50)
             {
-                ColumnQuantity = 6f;
+                ColumnQuantity = 3f;
 
             }
             else if (sphere.speed <= 100)
             {
-                ColumnQuantity = 8f;
+                ColumnQuantity = 3.5f;
 
             }
             else
             {
-                ColumnQuantity = 10f;
+                ColumnQuantity = 5f;
 
             }
 

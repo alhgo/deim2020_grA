@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Sphere : MonoBehaviour
 {
     public float speed = 10f;
-    float speedMov = 10f;
+    float speedMov = 15f;
     float speedSimulated;
 
     [SerializeField] Text SpeedText;
@@ -39,7 +39,7 @@ public class Sphere : MonoBehaviour
 
     void MoverNave()
     {
-        float posX = transform.position.x - 3.49f;
+        float posX = transform.position.x - 2.8154f;
         float posY = transform.position.y;
 
        //print(posY);
