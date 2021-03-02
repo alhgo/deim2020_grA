@@ -39,7 +39,7 @@ public class Sphere : MonoBehaviour
 
     void MoverNave()
     {
-        float posX = transform.position.x;
+        float posX = transform.position.x - 3.49f;
         float posY = transform.position.y;
 
        //print(posY);
@@ -49,7 +49,7 @@ public class Sphere : MonoBehaviour
 
         if(posX > -15 && posX < 15 || posX < -15 && desplX > 0 || posX > 15 && desplX < 0)
         {
-            transform.Translate(Vector3.right * Time.deltaTime * speedMov * desplX);
+            transform.Translate(Vector3.left * Time.deltaTime * speedMov * desplX);
         }
        
 
