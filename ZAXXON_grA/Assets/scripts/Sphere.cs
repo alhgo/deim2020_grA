@@ -14,12 +14,20 @@ public class Sphere : MonoBehaviour
     [SerializeField] GameObject DistanceObject;
     private Distance distance;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip motor;
+    [SerializeField] AudioClip explosion;
+
+
     // Start is called before the first frame update
     void Start()
     {
         distance = DistanceObject.GetComponent<Distance>();
+        audioSource = GetComponent<AudioSource>();
 
         StartCoroutine("SpeedCorrutine");
+
+        audioSource.PlayOneShot(motor, 0.3f);
     }
 
     // Update is called once per frame
@@ -28,6 +36,11 @@ public class Sphere : MonoBehaviour
 
         //Método para mover la nave con el joystick
         MoverNave();
+
+      /*  if(distance.crash == true)
+        {
+            audioSource.PlayOneShot(explosion, 0.25f);
+        }*/
 
 
     }
@@ -57,7 +70,8 @@ public class Sphere : MonoBehaviour
         {
             transform.Translate(Vector3.up * Time.deltaTime * speedMov * desplY);
         }
-        
+
+         
     }
     void CheckSpeed()
     {

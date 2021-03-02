@@ -30,12 +30,18 @@ public class NaveCollider : MonoBehaviour
             print("Se ha chocado con un obstáculo");
             distance.crash = true;
             myMesh.enabled = false;
-   
+
             SceneManager.LoadScene(3);
+            /*Invoke("LoadScene", 5.5f);     */
 
 
         }
     }
+
+    /*void LoadScene()
+    {
+        SceneManager.LoadScene(3);
+    }*/
 
     /* private void OnTriggerEnter(Collider other)
     {
